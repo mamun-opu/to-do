@@ -1,9 +1,11 @@
 import React from 'react';
 
 const Done = (props) => {
+    const name = props.name;
+    
     return (
         <div>
-            <li>Well done, {props.name} is completed</li>
+            <li>Well done, {name} is completed</li>
         </div>
     );
 };
