@@ -7,7 +7,7 @@ import Task from '../Task/Task';
 const Tasks = () => {
     const [todo, setTodo] = useState(''); 
     const [todoList, setTodoList] = useState([])
-    const [completedTodo, setCompletedTodo] = useState([])
+    const [completedTodoList, setCompletedTodoList] = useState([])
 
 
     
@@ -70,11 +70,14 @@ const Tasks = () => {
 
     const handleComplete = (key) => {
         let currentTodoList = [...todoList]
-        const newTodoList = currentTodoList.filter(task => task.id === key)
-        const newcompletedTodo = currentTodoList.filter(task => task.id === key);
-        let completedList = [...completedTodo]
-        completedList.push(newcompletedTodo)
-        setCompletedTodo(completedList)
+        const newTodoList = currentTodoList.filter(task => task.id !== key)
+        const newCompletedTodo = currentTodoList.filter(task => task.id === key);
+        setCompletedTodoList([
+            ...completedTodoList, newCompletedTodo
+        ])
+        // let completedList = [...completedTodo]
+        // completedList.push(newCompletedTodo)
+        // setCompletedTodo(completedList)
         setTodoList(newTodoList);
     }
 
@@ -108,10 +111,10 @@ const Tasks = () => {
                     />)
             }
             {/* {
-                completedTodo.length <= 0 ? <h2>No task has done yet</h2> : <h2> Congratulations</h2>
+                completedTodoList.length <= 0 ? <h2>No task has done yet</h2> : <h2> Congratulations</h2>
             } */}
             {/* {
-                completedTodo.map((task, index) => <Done key = {index + Math.random()*(10 - 1) + 1} name = {task}/>) 
+                completedTodoList.map((task, index) => <Done key = {index + Math.random()*(10 - 1) + 1} name = {task}/>) 
             } */}
             {/* {
                 isUpdate ? (
