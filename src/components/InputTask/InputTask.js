@@ -6,7 +6,6 @@ const InputTask = ({todo, setTodo, todoList, setTodoList}) => {
     const [errorMessage, setErrorMessage] = useState('');
 
     const handleChange = (e) => {
-        console.log(e.target.value)
         setTodo(e.target.value)
     }
     
@@ -15,7 +14,7 @@ const InputTask = ({todo, setTodo, todoList, setTodoList}) => {
 
         let is = todoList.some(task => task.name === todo)
         
-        if(is === false){
+        if(is === false && todo.length > 0){
             setTodoList([ ...todoList, {
                     name: todo,
                     id: `${Math.random()*1000}abc_xyz${Math.random()*1000}`
@@ -23,8 +22,10 @@ const InputTask = ({todo, setTodo, todoList, setTodoList}) => {
              ]);
              setTodo('')
              setErrorMessage('')
+        } else if(todo.length <= 0){
+            setErrorMessage('please insert your task')
         } else{
-            setErrorMessage('This task is already in the list')
+            setErrorMessage('this task is already in the list')
         }
         
         e.preventDefault();

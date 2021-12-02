@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import CompletedTask from '../CompletedTask/CompletedTask';
 import InputTask from '../InputTask/InputTask';
 // import Done from './Done';
 
@@ -73,12 +74,19 @@ const Tasks = () => {
         const newTodoList = currentTodoList.filter(task => task.id !== key)
         const newCompletedTodo = currentTodoList.filter(task => task.id === key);
         setCompletedTodoList([
-            ...completedTodoList, newCompletedTodo
+            ...completedTodoList, ...newCompletedTodo
         ])
-        // let completedList = [...completedTodo]
-        // completedList.push(newCompletedTodo)
-        // setCompletedTodo(completedList)
         setTodoList(newTodoList);
+    }
+
+    const handleRedo = (key) => {
+        let currentCompletedTodoList = [...completedTodoList]
+        const newCompletedTodoList = currentCompletedTodoList.filter(task => task.id !== key)
+        const newTodo = currentCompletedTodoList.filter(task => task.id === key);
+        setTodoList([
+            ...todoList, ...newTodo
+        ])
+        setCompletedTodoList(newCompletedTodoList);
     }
 
     // const handleUpdate = (index) => {
@@ -110,12 +118,17 @@ const Tasks = () => {
                         name = {task.name} key = {task.id} 
                     />)
             }
-            {/* {
+            {
                 completedTodoList.length <= 0 ? <h2>No task has done yet</h2> : <h2> Congratulations</h2>
-            } */}
-            {/* {
-                completedTodoList.map((task, index) => <Done key = {index + Math.random()*(10 - 1) + 1} name = {task}/>) 
-            } */}
+            }
+            {
+                completedTodoList.map((task) => {
+                    return <CompletedTask  
+                    name = {task.name} 
+                    key = {task.id} 
+                    redoHandler = {() => handleRedo(task.id)}/>
+                })
+            }
             {/* {
                 isUpdate ? (
                     <div>
