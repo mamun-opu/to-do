@@ -5,17 +5,6 @@ const Task = ({ name, todoList,setTodoList, deleteHandler, completeHandler, id }
   const [newInput, setNewInput] = useState('')
   const [display, setDisplay] = useState(true);
   const [taskToEdit, setTaskToEdit] = useState({});
-
-  // const refName = useRef(null);
-  // const refInput = useRef(null);
-
-  // refInput.current.style.display = 'none'
-
-  // useEffect(() => {
-
-  // })
-  console.log(taskToEdit)
-  console.log(newInput)
   
  
   const handleChange = (e) => {
@@ -23,12 +12,7 @@ const Task = ({ name, todoList,setTodoList, deleteHandler, completeHandler, id }
   }
   const handleSubmit = (event) => {
     let newTaskList = [...todoList];
-    console.log(taskToEdit.id)
-    let task = {
-        name: newInput,
-        id: taskToEdit.id
-    }
-    console.log(task)
+
     const editedList = newTaskList.map(todo => {
         if(todo.id === taskToEdit.id){
             todo.name = newInput
