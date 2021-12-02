@@ -1,0 +1,14 @@
+.taskDisplay{
+    justify-content: center;
+    align-items: center;
+}
+.display-flex{
+    display: flex;
+}
+.display-none{
+    display: none;
+}
+.display-block{
+    display: block;
+    margin-top: 20px;
+}

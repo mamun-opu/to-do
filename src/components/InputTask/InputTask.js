@@ -25,7 +25,7 @@ const InputTask = ({todo, setTodo, todoList, setTodoList}) => {
         } else if(todo.length <= 0){
             setErrorMessage('please insert your task')
         } else{
-            setErrorMessage('this task is already in the list')
+            setErrorMessage('Hold on, this task is already in the list')
         }
         
         e.preventDefault();
@@ -34,7 +34,7 @@ const InputTask = ({todo, setTodo, todoList, setTodoList}) => {
     
     return (
         <div>
-            {errorMessage}
+            <span style = {{fontWeight: 'bold', fontSize: 'larger', color: 'maroon'}}>{errorMessage}</span>
             <form style = {{marginTop: '10px'}} onSubmit={handleSubmit}>
                 <label>
                 Name:

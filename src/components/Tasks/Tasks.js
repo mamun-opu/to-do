@@ -11,58 +11,6 @@ const Tasks = () => {
     const [completedTodoList, setCompletedTodoList] = useState([])
 
 
-    
-    // const [isUnique, setIsUnique] = useState(false);
-    // const [isUpdate, setIsUpdate] = useState(false);
-    // const [selectedTask, SelectedTask] = useState(-1)
-
-
-    // const handleTodoChange = (event) => {
-    //     setTodo(event.target.value)
-    // } 
-
-    // const handleUpdateTodoList = (event) => {
-    //     setTodo('');
-    //     let isUnique = false;
-    //     let myTasks = todoList.filter(task => task);
-    //     console.log(myTasks.length)
-    
-    //     if(myTasks.length <= 0){
-    //         isUnique = true;
-    //     }else{
-    //         isUnique = myTasks.some(task => {
-    //             console.log('....hello......')
-    //             console.log(todo, task.value)
-    //             console.log(todo !== task.value)
-    //             return todo !== task.value
-    //         })
-    //         console.log(isUnique)
-    //     }
-    //     if(isUnique === true){
-    //         console.log(isUnique)
-    //         let newTask =  {
-    //             value: todo,
-    //             id: todoList.length
-    //         }
-    //         myTasks.push(newTask);
-    //         setTodoList(myTasks);
-    //         setErrorMessage('');
-    //         isUnique = false;
-    //         console.log(isUnique)
-    //     }else{
-    //         console.log('errrrrrrrrrr')
-    //         setErrorMessage('this task is already in the list')
-    //     }
-        
-    //     console.log(todo)
-        
-    //     console.log(todoList)
-    //     event.preventDefault();
-    // }
-
-
-    
-
     const handleDelete = (key) => {
         let currentList = [...todoList]
         const newTodoList = currentList.filter(task => task.id !== key)
@@ -99,9 +47,6 @@ const Tasks = () => {
     //     setTodoList(newTask);
     // }
 
-    const handleUpdate = () => {
-
-    }
      
     
     return (
@@ -114,8 +59,9 @@ const Tasks = () => {
                     <Task
                         deleteHandler = {() => handleDelete(task.id)}  
                         completeHandler = {() => {handleComplete(task.id)}}
-                        updateHandler = {() => {handleUpdate(task.id)}}
-                        name = {task.name} key = {task.id} 
+                        name = {task.name} key = {task.id} id = {task.id}
+                        todoList = {todoList}
+                        setTodoList = {setTodoList}
                     />)
             }
             {
