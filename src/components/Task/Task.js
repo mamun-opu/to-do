@@ -1,13 +1,14 @@
 import React from 'react';
 
-const Task = (props) => {
+const Task = ({name, updateHandler, deleteHandler, completeHandler}) => {
+    
     return (
         <div style = {{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-            <h3>{props.name}</h3>
+            <h3>{name}</h3>
             <div style = {{marginLeft: '10px'}}>
-                <button onClick = {props.updateHandler}>update</button>
-                <button onClick = {props.deleteHandler}>delete</button>
-                <button onClick = {props.completeHandler}>complete</button>
+                <button onClick = {updateHandler}>update</button>
+                <button onClick = {deleteHandler}>delete</button>
+                <button onClick = {completeHandler}>complete</button>
             </div>
         </div>
     );
