@@ -25,7 +25,7 @@ const Task = ({ name, todoList,setTodoList, deleteHandler, completeHandler, id }
   }
 
 
-  const handleEdit = (key) => {
+  const handleSelectTask = (key) => {
     setNewInput(name)
     setDisplay(false)
     let newTaskList = [...todoList];
@@ -39,14 +39,14 @@ const Task = ({ name, todoList,setTodoList, deleteHandler, completeHandler, id }
             <h3 style={{ color: 'tomato' }}>{name}</h3>
 
             <div style={{ marginLeft: '10px' }}>
-                <button onClick={() => handleEdit(id)}>update</button>
+                <button onClick={() => handleSelectTask(id)}>update</button>
                 <button onClick={deleteHandler}>delete</button>
                 <button onClick={completeHandler}>complete</button>
             </div>
         </div>
         <form className = {(display ? 'display-none' : 'display-block')} onSubmit={handleSubmit}>
             <label>
-                edit here :
+                <span style = {{fontSize: 'larger', fontWeight: 'bold', marginRight: '15px'}}>edit here:</span>
                 <input type="text" value={newInput} onChange={handleChange} />
             </label>
             <input type="submit" value="edit done"/>

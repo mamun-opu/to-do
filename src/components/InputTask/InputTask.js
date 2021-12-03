@@ -37,7 +37,7 @@ const InputTask = ({todo, setTodo, todoList, setTodoList}) => {
             <span style = {{fontWeight: 'bold', fontSize: 'larger', color: 'maroon'}}>{errorMessage}</span>
             <form style = {{marginTop: '10px'}} onSubmit={handleSubmit}>
                 <label>
-                Name:
+                <span style = {{fontSize: 'larger', fontWeight: 'bold', marginRight: '15px'}}>Name:</span>
                 <input
                     type="text"
                     value={todo}
