@@ -9,13 +9,13 @@ const Tasks = () => {
     const [todoList, setTodoList] = useState([])
     const [completedTodoList, setCompletedTodoList] = useState([])
 
-
+//handling delete task
     const handleDelete = (key) => {
         let currentList = [...todoList]
-        const newTodoList = currentList.filter(task => task.id !== key)
+        const newTodoList = currentList.filter(task => task.id !== key) 
         setTodoList(newTodoList)
     }
-
+//removing completed task from list and adding them to completed list
     const handleComplete = (key) => {
         let currentTodoList = [...todoList]
         const newTodoList = currentTodoList.filter(task => task.id !== key)
@@ -25,7 +25,7 @@ const Tasks = () => {
         ])
         setTodoList(newTodoList);
     }
-
+//removing completed task from completed and adding them to main list
     const handleRedo = (key) => {
         let currentCompletedTodoList = [...completedTodoList]
         const newCompletedTodoList = currentCompletedTodoList.filter(task => task.id !== key)

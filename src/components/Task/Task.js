@@ -2,14 +2,16 @@ import React, { useState } from 'react'
 import './Tasks.css'
 
 const Task = ({ name, todoList,setTodoList, deleteHandler, completeHandler, id }) => {
-  const [newInput, setNewInput] = useState('')
-  const [display, setDisplay] = useState(true);
-  const [taskToEdit, setTaskToEdit] = useState({});
+  const [newInput, setNewInput] = useState(''); //to grab the input value from onChange 
+  const [display, setDisplay] = useState(true); //to switch which one to see on display, task or input
+  const [taskToEdit, setTaskToEdit] = useState({}); //to store the selected task to be edited
   
- 
+//grabbing the input value from onChange 
   const handleChange = (e) => {
     setNewInput(e.target.value)
   }
+
+//Handling the editing task after submitting the input
   const handleSubmit = (event) => {
     let newTaskList = [...todoList];
 
@@ -24,7 +26,7 @@ const Task = ({ name, todoList,setTodoList, deleteHandler, completeHandler, id }
     event.preventDefault();
   }
 
-
+//Selecting the task to be edited
   const handleSelectTask = (key) => {
     setNewInput(name)
     setDisplay(false)

@@ -9,7 +9,7 @@ const InputTask = ({todo, setTodo, todoList, setTodoList}) => {
         setTodo(e.target.value)
     }
     
-
+// adding task to main list
     const handleSubmit = (e) => {
 
         let is = todoList.some(task => task.name === todo)
