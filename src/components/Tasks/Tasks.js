@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import CompletedTask from '../CompletedTask/CompletedTask';
 import InputTask from '../InputTask/InputTask';
-// import Done from './Done';
 
 import Task from '../Task/Task';
 
@@ -36,18 +35,6 @@ const Tasks = () => {
         ])
         setCompletedTodoList(newCompletedTodoList);
     }
-
-    // const handleUpdate = (index) => {
-    //     setIsUpdate(true)
-    //     SelectedTask(index)
-    // }
-    // const taskUpdater = (event) => {
-    //     let newTask = [...todoList]
-    //     newTask[selectedTask] = event.target.value;
-    //     setTodoList(newTask);
-    // }
-
-     
     
     return (
         <div>
@@ -75,15 +62,6 @@ const Tasks = () => {
                     redoHandler = {() => handleRedo(task.id)}/>
                 })
             }
-            {/* {
-                isUpdate ? (
-                    <div>
-                        <input onChange  = {(event) => taskUpdater(event)} type="text" />
-                        <button onClick = {() => setIsUpdate(false)}>update done</button>
-                    </div>
-                
-                ): null
-            } */}
             
         </div>
     );
