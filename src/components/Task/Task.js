@@ -35,6 +35,12 @@ const Task = ({ name, todoList,setTodoList, deleteHandler, completeHandler, id }
     setTaskToEdit(...selectedTask);
   }
 
+  const handleCancelEdit = ()=> {
+    setTaskToEdit({});
+    setNewInput('');
+    setDisplay(true);
+  }
+
   return (
     <div>
         <div className =  {'taskDisplay ' + (display ? 'display-flex': 'display-none')}>
@@ -52,6 +58,7 @@ const Task = ({ name, todoList,setTodoList, deleteHandler, completeHandler, id }
                 <input type="text" value={newInput} onChange={handleChange} />
             </label>
             <input type="submit" value="edit done"/>
+            <input type="button" value="cancel edit" onClick = {handleCancelEdit}/>
         </form>
     </div>
   )
