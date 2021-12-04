@@ -42,13 +42,14 @@ const Tasks = () => {
             <InputTask todo = {todo} setTodo = {setTodo} todoList = {todoList} setTodoList = {setTodoList}/>
             
             {
-                todoList.map((task) => 
+                todoList.map((task, index) => 
                     <Task
                         deleteHandler = {() => handleDelete(task.id)}  
                         completeHandler = {() => {handleComplete(task.id)}}
                         name = {task.name} key = {task.id} id = {task.id}
                         todoList = {todoList}
                         setTodoList = {setTodoList}
+                        taskNumber = {index}
                     />)
             }
             {

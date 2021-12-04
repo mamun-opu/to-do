@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Tasks.css'
 
-const Task = ({ name, todoList,setTodoList, deleteHandler, completeHandler, id }) => {
+const Task = ({ name, todoList,setTodoList, deleteHandler, completeHandler, id, taskNumber }) => {
   const [newInput, setNewInput] = useState(''); //to grab the input value from onChange 
   const [display, setDisplay] = useState(true); //to switch which one to see on display, task or input
   const [taskToEdit, setTaskToEdit] = useState({}); //to store the selected task to be edited
@@ -44,7 +44,7 @@ const Task = ({ name, todoList,setTodoList, deleteHandler, completeHandler, id }
   return (
     <div>
         <div className =  {'taskDisplay ' + (display ? 'display-flex': 'display-none')}>
-            <h3 style={{ color: 'tomato' }}>{name}</h3>
+            <h3 style={{ color: 'tomato' }}>{taskNumber+1}. {name}</h3>
 
             <div style={{ marginLeft: '10px' }}>
                 <button onClick={() => handleSelectTask(id)}>update</button>
