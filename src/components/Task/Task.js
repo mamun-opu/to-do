@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import './Tasks.css'
 
 const Task = ({ name, todoList,setTodoList, deleteHandler, completeHandler, id, taskNumber }) => {
@@ -27,11 +28,11 @@ const Task = ({ name, todoList,setTodoList, deleteHandler, completeHandler, id, 
   }
 
 //Selecting the task to be edited
-  const handleSelectTask = (key) => {
+  const handleSelectTask = (keyId) => {
     setNewInput(name)
     setDisplay(false)
     let newTaskList = [...todoList];
-    const selectedTask = newTaskList.filter(task => task.id === key);
+    const selectedTask = newTaskList.filter(task => task.id === keyId);
     setTaskToEdit(...selectedTask);
   }
 
@@ -44,7 +45,7 @@ const Task = ({ name, todoList,setTodoList, deleteHandler, completeHandler, id, 
   return (
     <div>
         <div className =  {'taskDisplay ' + (display ? 'display-flex': 'display-none')}>
-            <h3 style={{ color: 'tomato' }}>{taskNumber+1}. {name}</h3>
+            <h3 style={{ color: 'tomato', textDecoration: 'none' }}><Link to = {"/task/"+id}>{taskNumber+1}. {name}</Link></h3>
 
             <div style={{ marginLeft: '10px' }}>
                 <button onClick={() => handleSelectTask(id)}>update</button>
