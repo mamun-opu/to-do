@@ -45,7 +45,7 @@ const Task = ({ name, todoList,setTodoList, deleteHandler, completeHandler, id, 
   return (
     <div>
         <div className =  {'taskDisplay ' + (display ? 'display-flex': 'display-none')}>
-            <h3 style={{ color: 'tomato', textDecoration: 'none' }}><Link to = {"/task/"+id}>{taskNumber+1}. {name}</Link></h3>
+            <h3><Link style={{ color: 'tomato', textDecoration: 'none' }} to = {"/task/"+id}>{taskNumber+1}. {name}</Link></h3>
 
             <div style={{ marginLeft: '10px' }}>
                 <button onClick={() => handleSelectTask(id)}>update</button>
