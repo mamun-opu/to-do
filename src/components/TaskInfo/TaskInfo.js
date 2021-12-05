@@ -10,11 +10,7 @@ const TaskInfo = () => {
         return (todo.id === taskId)
     })
     const [taskInfo] = todo;
-    console.log(taskInfo)
-   
 
-    
-    console.log(taskId)
 
     return (
         <div>
