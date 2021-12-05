@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { taskContext } from '../../App';
 import CompletedTask from '../CompletedTask/CompletedTask';
 import InputTask from '../InputTask/InputTask';
 
 import Task from '../Task/Task';
 
 const Tasks = () => {
+    const [todoList, setTodoList] = useContext(taskContext)
     const [todo, setTodo] = useState(''); 
-    const [todoList, setTodoList] = useState([])
     const [completedTodoList, setCompletedTodoList] = useState([])
 
 //handling delete task
@@ -47,8 +48,6 @@ const Tasks = () => {
                         deleteHandler = {() => handleDelete(task.id)}  
                         completeHandler = {() => {handleComplete(task.id)}}
                         name = {task.name} key = {task.id} id = {task.id}
-                        todoList = {todoList}
-                        setTodoList = {setTodoList}
                         taskNumber = {index}
                     />)
             }

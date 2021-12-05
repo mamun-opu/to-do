@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom';
+import { taskContext } from '../../App';
 import './Tasks.css'
 
-const Task = ({ name, todoList,setTodoList, deleteHandler, completeHandler, id, taskNumber }) => {
+const Task = ({ name, deleteHandler, completeHandler, id, taskNumber }) => {
+  const [todoList, setTodoList] = useContext(taskContext);
   const [newInput, setNewInput] = useState(''); //to grab the input value from onChange 
   const [display, setDisplay] = useState(true); //to switch which one to see on display, task or input
   const [taskToEdit, setTaskToEdit] = useState({}); //to store the selected task to be edited
@@ -14,16 +16,23 @@ const Task = ({ name, todoList,setTodoList, deleteHandler, completeHandler, id, 
 
 //Handling the editing task after submitting the input
   const handleSubmit = (event) => {
-    let newTaskList = [...todoList];
+    if(newInput.length === 0){
+      setTaskToEdit({});
+      setNewInput('');
+      setDisplay(true);
+    }else{
+      let newTaskList = [...todoList];
 
-    const editedList = newTaskList.map(todo => {
-        if(todo.id === taskToEdit.id){
-            todo.name = newInput
-        }
-        return todo;
-    })
-    setTodoList(editedList);
-    setDisplay(true)
+      const editedList = newTaskList.map(todo => {
+          if(todo.id === taskToEdit.id){
+              todo.name = newInput
+          }
+          return todo;
+      })
+      setTodoList(editedList);
+      setDisplay(true)
+    }
+    
     event.preventDefault();
   }
 

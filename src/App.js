@@ -6,12 +6,15 @@ import {
   Route
 } from "react-router-dom";
 import TaskInfo from './components/TaskInfo/TaskInfo';
+import { createContext, useState } from 'react/cjs/react.development';
 
-
+export const taskContext = createContext();
 
 function App() {
+  const [todoList, setTodoList] = useState([]);
   return (
     <div className="App">
+      <taskContext.Provider value = {[todoList, setTodoList]}>
       <BrowserRouter>
         <Routes>
           <Route exact path = '/' element = {<Tasks />} />
@@ -21,8 +24,7 @@ function App() {
           />
         </Routes>
       </BrowserRouter>
-
-      
+      </taskContext.Provider>
     </div>
   );
 }
