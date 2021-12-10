@@ -1,34 +1,42 @@
-import React from 'react'
-import { useState } from 'react/cjs/react.development';
+import { useState } from 'react';
+import React from 'react';
 
-const InputTask = ({todo, setTodo, todoList, setTodoList}) => {
+export interface IInputProps{
+    todo: string,
+    setTodo: (todo: string) => void,
+    todoList: any [],
+    setTodoList: (todoList: any) => void
+}
+
+const InputTask = ({todo, setTodo, todoList, setTodoList}: IInputProps) => {
 
     const [errorMessage, setErrorMessage] = useState('');
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement> ) => {
         setTodo(e.target.value)
     }
     
-// adding task to main list
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: any) => {
 
-        let is = todoList.some(task => task.name === todo)
-        
-        if(is === false && todo.length > 0){
-            setTodoList([ ...todoList, {
-                    name: todo,
-                    id: `${Math.random()*1000}abc_xyz${Math.random()*1000}`
-                }
-             ]);
-             setTodo('')
-             setErrorMessage('')
-        } else if(todo.length <= 0){
-            setErrorMessage('please insert your task')
-        } else{
-            setErrorMessage('Hold on, this task is already in the list')
-        }
-        
+        let isTaskExist = todoList.some(task => task.name === todo)
         e.preventDefault();
+
+        if(todo.length <= 0){
+            setErrorMessage('please insert your task')
+            return;
+        }
+        if(isTaskExist){
+            setErrorMessage('Hold on, this task is already in the list')
+            return;
+        }
+        setTodoList([ ...todoList, {
+            name: todo,
+            id: `${Math.random()*1000}abc_xyz${Math.random()*1000}`,
+            isComplete: false
+        }
+        ]);
+        setTodo('')
+        setErrorMessage('')
     }
 
     

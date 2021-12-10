@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { useParams } from 'react-router';
-import { taskContext } from '../../App';
+import { TaskContext } from '../../App';
 
 
 const TaskInfo = () => {
     const {taskId} = useParams();
-    const [todoList] = useContext(taskContext);
+    const {todoList} = useContext(TaskContext);
     const todo = todoList.filter(todo => {
         return (todo.id === taskId)
     })

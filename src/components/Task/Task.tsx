@@ -1,21 +1,28 @@
 import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom';
-import { taskContext } from '../../App';
-import './Tasks.css'
+import { ITodoList, TaskContext } from '../../App';
+import './Tasks.css';
+import { ITaskContext } from '../../App';
 
-const Task = ({ name, deleteHandler, completeHandler, id, taskNumber }) => {
-  const [todoList, setTodoList] = useContext(taskContext);
-  const [newInput, setNewInput] = useState(''); //to grab the input value from onChange 
-  const [display, setDisplay] = useState(true); //to switch which one to see on display, task or input
-  const [taskToEdit, setTaskToEdit] = useState({}); //to store the selected task to be edited
-  
-//grabbing the input value from onChange 
-  const handleChange = (e) => {
+export interface ITaskProps{
+  name: string;
+  deleteHandler: () => void;
+  completeHandler: () => void;
+  id: string;
+  taskNumber: number;
+}
+
+const Task = ({ name, deleteHandler, completeHandler, id, taskNumber }: ITaskProps) => {
+  const {todoList, setTodoList} = useContext<ITaskContext>(TaskContext);
+  const [newInput, setNewInput] = useState('');
+  const [display, setDisplay] = useState(true);
+  const [taskToEdit, setTaskToEdit] = useState<any>({});
+
+  const handleChange = (e: any) => {
     setNewInput(e.target.value)
   }
 
-//Handling the editing task after submitting the input
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: any) => {
     if(newInput.length === 0){
       setTaskToEdit({});
       setNewInput('');
@@ -23,7 +30,7 @@ const Task = ({ name, deleteHandler, completeHandler, id, taskNumber }) => {
     }else{
       let newTaskList = [...todoList];
 
-      const editedList = newTaskList.map(todo => {
+      const editedList: ITodoList[] = newTaskList.map(todo => {
           if(todo.id === taskToEdit.id){
               todo.name = newInput
           }
@@ -36,13 +43,12 @@ const Task = ({ name, deleteHandler, completeHandler, id, taskNumber }) => {
     event.preventDefault();
   }
 
-//Selecting the task to be edited
-  const handleSelectTask = (keyId) => {
+  const handleSelectTask = (keyId: string) => {
     setNewInput(name)
     setDisplay(false)
     let newTaskList = [...todoList];
-    const selectedTask = newTaskList.filter(task => task.id === keyId);
-    setTaskToEdit(...selectedTask);
+    const selectedTask = newTaskList.find(task => task.id === keyId);
+    setTaskToEdit(selectedTask);
   }
 
   const handleCancelEdit = ()=> {

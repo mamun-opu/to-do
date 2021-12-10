@@ -1,7 +1,12 @@
 import React from 'react';
-import './CompletedTask.css'
+import './CompletedTask.css';
 
-const CompletedTask = ({name, redoHandler}) => {
+export interface ICompletedProps{
+    name: string,
+    redoHandler: () => void
+}
+
+const CompletedTask = ({name, redoHandler}: ICompletedProps) => {
     
     return (
         <div style = {{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
