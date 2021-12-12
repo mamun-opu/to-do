@@ -44,9 +44,7 @@ const Task = ({ taskNumber, todo }: ITaskProps) => {
               <div style={{marginTop: '3px'}}>
                 <input type="button" value="cancel edit" onClick = {switchOffEdit}/> 
               </div>
-              
             </form>
-            
         </div>
     </div>
   )

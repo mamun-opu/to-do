@@ -26,11 +26,11 @@ const EditTask = ({id, setDisplay, newInput, setNewInput}: IEditTask) => {
 
     return (
         
-    <Form todo= {newInput} 
-        setTodo = {setNewInput} 
-        handleSubmit={EditTaskName}
-        buttonInputValue = "edit done"
-    />
+        <Form todo= {newInput} 
+            setTodo = {setNewInput} 
+            handleSubmit={EditTaskName}
+            buttonInputValue = "edit done"
+        />
     );
 };
 
