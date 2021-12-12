@@ -2,7 +2,6 @@ import { useContext} from 'react';
 import { TaskContext } from '../../App';
 import CompletedTask from '../CompletedTask/CompletedTask';
 import InputTask from '../InputTask/InputTask';
-// import { ITaskContext } from '../../App';
 import Task from '../Task/Task';
 
 const Tasks = () => {
@@ -12,7 +11,7 @@ const Tasks = () => {
     return (
         <div>
             
-            <InputTask buttonInputValue='add'/>
+            <InputTask />
             {
                 todoList?.map((todo, index) => {
                     return(
@@ -26,7 +25,7 @@ const Tasks = () => {
                 })
             }
             {
-                todoList?.some(todo => !todo.isCompleted) ? <h2>No task has done yet</h2> : <h2> Congratulations</h2>
+                todoList?.some(todo => todo.isCompleted) ? <h2> Congratulations</h2> : <h2>No task has done yet</h2> 
             }
             {
                 todoList?.map((todo: any) =>  {

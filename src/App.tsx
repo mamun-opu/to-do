@@ -53,11 +53,9 @@ function App() {
     if(id){
       const newTodoList = [...todoList]
       const taskIndex = newTodoList.findIndex(task => task.id === id)
-      console.log(taskIndex)
-      if(taskIndex){
+      if(taskIndex !== -1){
         newTodoList[taskIndex].name = name;
         setTodoList(newTodoList);
-        console.log(newTodoList);
         setErrorMessage('');
         return;
       }
