@@ -17,9 +17,9 @@ export interface ITaskContext {
   todoList: ITodo[];
   handleChange:(value: any)=> void;
   handleSubmit:(value: any)=> void;
-  handleDelete:(key: string)=> void;
-  handleComplete:(key: string)=> void;
-  handleRedo:(key: string)=> void;
+  deleteTask:(key: string)=> void;
+  completeTask:(key: string)=> void;
+  redoTask:(key: string)=> void;
 }
 
 
@@ -72,21 +72,21 @@ function App() {
   }
 
 
-  const handleDelete = (key: string) => {
+  const deleteTask = (key: string) => {
     let currentList = [...todoList]
     const newTodoList = currentList.filter(task => task.id !== key) 
     setTodoList(newTodoList)
   }
 
 
-  const handleComplete = (key: string) => {
+  const completeTask = (key: string) => {
     let newTodoList = [...todoList]
     const taskIndex = newTodoList.findIndex(task => task.id === key)
     newTodoList[taskIndex].isCompleted = true;
     setTodoList(newTodoList);
   }
 
-  const handleRedo = (key: string) => {
+  const redoTask = (key: string) => {
     let newTodoList = [...todoList]
     const taskIndex = newTodoList.findIndex(task => task.id === key)
     newTodoList[taskIndex].isCompleted = false;
@@ -99,9 +99,9 @@ function App() {
         todoList,
         errorMessage, 
         addNewTask,
-        handleDelete,
-        handleComplete,
-        handleRedo
+        deleteTask,
+        completeTask,
+        redoTask
         }}
       >
       <BrowserRouter>

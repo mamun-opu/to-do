@@ -14,7 +14,7 @@ const Task = ({ taskNumber, todo }: ITaskProps) => {
 
   const [newInput, setNewInput] = useState('');
   const [display, setDisplay] = useState(true);
-  const { handleDelete, handleComplete } = useContext(TaskContext)
+  const { deleteTask, completeTask } = useContext(TaskContext)
 
 
   const switchOnEdit = () => {
@@ -34,13 +34,19 @@ const Task = ({ taskNumber, todo }: ITaskProps) => {
 
             <div style={{ marginLeft: '10px' }}>
                 <button onClick={switchOnEdit}>update</button>
-                <button onClick={() => handleDelete && handleDelete(todo.id)}>delete</button>
-                <button onClick={() => handleComplete && handleComplete(todo.id)}>complete</button>
+                <button onClick={() => deleteTask && deleteTask(todo.id)}>delete</button>
+                <button onClick={() => completeTask && completeTask(todo.id)}>complete</button>
             </div>
         </div>
-        <div className = {(display ? 'display-none' : 'display-block')}>
+        <div className = {(display ? 'display-none' : 'display-flex')}>
             <EditTask setDisplay={setDisplay} id = {todo.id} newInput = {newInput} setNewInput = {setNewInput}/>
-            <input type="button" value="cancel edit" onClick = {switchOffEdit}/> 
+            <form action="">
+              <div style={{marginTop: '3px'}}>
+                <input type="button" value="cancel edit" onClick = {switchOffEdit}/> 
+              </div>
+              
+            </form>
+            
         </div>
     </div>
   )

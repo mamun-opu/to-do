@@ -1,4 +1,3 @@
-import React from 'react';
 export interface IForm {
     todo: string;
     setTodo:(value: string) => void;
@@ -7,7 +6,7 @@ export interface IForm {
   }
 const Form = ({ todo, setTodo, handleSubmit, buttonInputValue }: IForm) => {
     return (
-        <form style = {{marginTop: '10px'}} onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <label>
             <span style = {{fontSize: 'larger', fontWeight: 'bold', marginRight: '15px'}}>Name:</span>
             <input
