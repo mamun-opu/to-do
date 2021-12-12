@@ -45,7 +45,7 @@ function App() {
         return;
     }
     let isTaskExist = todoList.some(task => task.name === name)
-    if(isTaskExist){
+    if(isTaskExist && !id){
         setErrorMessage('Hold on, this task is already in the list')
         return;
     }
