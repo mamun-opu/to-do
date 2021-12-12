@@ -1,81 +1,85 @@
-import React, { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
-import { ITodoList, TaskContext } from '../../App';
+import { ITodo, TaskContext} from '../../App';
+import InputTask from '../InputTask/InputTask';
 import './Tasks.css';
-import { ITaskContext } from '../../App';
+
 
 export interface ITaskProps{
-  name: string;
-  deleteHandler: () => void;
-  completeHandler: () => void;
-  id: string;
   taskNumber: number;
+  todo: ITodo
 }
 
-const Task = ({ name, deleteHandler, completeHandler, id, taskNumber }: ITaskProps) => {
-  const {todoList, setTodoList} = useContext<ITaskContext>(TaskContext);
-  const [newInput, setNewInput] = useState('');
+const Task = ({ taskNumber, todo }: ITaskProps) => {
+
+  // const [newInput, setNewInput] = useState('');
   const [display, setDisplay] = useState(true);
-  const [taskToEdit, setTaskToEdit] = useState<any>({});
+  const { handleDelete, handleComplete, todoList } = useContext(TaskContext)
+  // const [taskToEdit, setTaskToEdit] = useState<any>({});
 
-  const handleChange = (e: any) => {
-    setNewInput(e.target.value)
-  }
+  // const handleChange = (e: any) => {
+  //   setNewInput(e.target.value)
+  // }
 
-  const handleSubmit = (event: any) => {
-    if(newInput.length === 0){
-      setTaskToEdit({});
-      setNewInput('');
-      setDisplay(true);
-    }else{
-      let newTaskList = [...todoList];
+  // const handleSubmit = (event: any) => {
+  //   if(newInput.length === 0){
+  //     setTaskToEdit({});
+  //     setNewInput('');
+  //     setDisplay(true);
+  //   }else{
+  //     let newTaskList = [...todoList];
 
-      const editedList: ITodoList[] = newTaskList.map(todo => {
-          if(todo.id === taskToEdit.id){
-              todo.name = newInput
-          }
-          return todo;
-      })
-      setTodoList(editedList);
-      setDisplay(true)
-    }
+  //     const editedList: ITodoList[] = newTaskList.map(todo => {
+  //         if(todo.id === taskToEdit.id){
+  //             todo.name = newInput
+  //         }
+  //         return todo;
+  //     })
+  //     setTodoList(editedList);
+  //     setDisplay(true)
+  //   }
     
-    event.preventDefault();
-  }
+  //   event.preventDefault();
+  // }
 
-  const handleSelectTask = (keyId: string) => {
-    setNewInput(name)
-    setDisplay(false)
-    let newTaskList = [...todoList];
-    const selectedTask = newTaskList.find(task => task.id === keyId);
-    setTaskToEdit(selectedTask);
-  }
+  // const switchOnEdit = () => {
+  //   // setNewInput(name)
+  //   setDisplay(false)
+  //   // let newTaskList = [...todoList];
+  //   // const selectedTask = todoList?.find(task => task.id === keyId);
+  //   // setTaskToEdit(selectedTask);
+    
+  // }
 
-  const handleCancelEdit = ()=> {
-    setTaskToEdit({});
-    setNewInput('');
-    setDisplay(true);
-  }
+  // const handleCancelEdit = ()=> {
+  //   // setTaskToEdit({});
+  //   // setNewInput('');
+  //   setDisplay(true);
+  // }
+  // useEffect(
+  //   () => setDisplay(false),
+  //   [<InputTask />]
+  // );
 
   return (
     <div>
         <div className =  {'taskDisplay ' + (display ? 'display-flex': 'display-none')}>
-            <h3><Link style={{ color: 'tomato', textDecoration: 'none' }} to = {"/task/"+id}>{taskNumber+1}. {name}</Link></h3>
+            <h3><Link style={{ color: 'tomato', textDecoration: 'none' }} to = {"/task/"+todo.id}>{taskNumber+1}. {todo.name}</Link></h3>
 
             <div style={{ marginLeft: '10px' }}>
-                <button onClick={() => handleSelectTask(id)}>update</button>
-                <button onClick={deleteHandler}>delete</button>
-                <button onClick={completeHandler}>complete</button>
+                <button onClick={()=>setDisplay(false)}>update</button>
+                <button onClick={() => handleDelete && handleDelete(todo.id)}>delete</button>
+                <button onClick={() => handleComplete && handleComplete(todo.id)}>complete</button>
             </div>
         </div>
-        <form className = {(display ? 'display-none' : 'display-block')} onSubmit={handleSubmit}>
-            <label>
+        <div className = {(display ? 'display-none' : 'display-block')}>
+            {/* <label>
                 <span style = {{fontSize: 'larger', fontWeight: 'bold', marginRight: '15px'}}>edit here:</span>
                 <input type="text" value={newInput} onChange={handleChange} />
-            </label>
-            <input type="submit" value="edit done"/>
-            <input type="button" value="cancel edit" onClick = {handleCancelEdit}/>
-        </form>
+            </label> */}
+            <InputTask id = {todo.id} buttonInputValue = "edit done" setDisplay = {setDisplay} taskInputValue = {todo.name}/>
+            <input type="button" value="cancel edit" onClick = {()=>setDisplay(true)}/>
+        </div>
     </div>
   )
 }

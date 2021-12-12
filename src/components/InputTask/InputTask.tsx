@@ -1,44 +1,44 @@
-import { useState } from 'react';
-import React from 'react';
+import { useContext, useState } from 'react';
+import { TaskContext } from '../../App';
 
 export interface IInputProps{
-    todo: string,
-    setTodo: (todo: string) => void,
-    todoList: any [],
-    setTodoList: (todoList: any) => void
-}
+    id?: string;
+    setDisplay?:(value: boolean)=>void;
+    taskInputValue?: string;
+    buttonInputValue: string;
+  }
 
-const InputTask = ({todo, setTodo, todoList, setTodoList}: IInputProps) => {
-
-    const [errorMessage, setErrorMessage] = useState('');
+const InputTask = ({id, taskInputValue, buttonInputValue, setDisplay}: IInputProps) => {
+    const { addNewTask, errorMessage} = useContext(TaskContext)
+    const [todo, setTodo] = useState(''); 
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement> ) => {
         setTodo(e.target.value)
     }
-    
+
     const handleSubmit = (e: any) => {
 
-        let isTaskExist = todoList.some(task => task.name === todo)
         e.preventDefault();
-
-        if(todo.length <= 0){
-            setErrorMessage('please insert your task')
+        if(setDisplay){
+            console.log('setdisplay')
+            setDisplay(true);
+        }
+        if(!addNewTask){
             return;
         }
-        if(isTaskExist){
-            setErrorMessage('Hold on, this task is already in the list')
-            return;
-        }
-        setTodoList([ ...todoList, {
-            name: todo,
-            id: `${Math.random()*1000}abc_xyz${Math.random()*1000}`,
-            isComplete: false
-        }
-        ]);
+        addNewTask(todo, id)
         setTodo('')
-        setErrorMessage('')
-    }
-
+        
+      }
+    // const EditTask = (e: any) => {
+        
+    //     e.preventDefault();
+    //     if(addNewTask){
+    //         addNewTask(todo, id)
+    //     }
+    //     setTodo('')
+        
+    // }
     
     return (
         <div>
@@ -52,7 +52,7 @@ const InputTask = ({todo, setTodo, todoList, setTodoList}: IInputProps) => {
                     onChange={handleChange}
                 />
                 </label>
-                <input type="submit" value="add" />
+                <input type="submit" onClick={handleSubmit} value={buttonInputValue} />
             </form>
         </div>
     )

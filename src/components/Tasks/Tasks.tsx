@@ -1,73 +1,40 @@
-import React, { useContext, useState } from 'react';
+import { useContext} from 'react';
 import { TaskContext } from '../../App';
-// import { taskContext } from '../../App';
 import CompletedTask from '../CompletedTask/CompletedTask';
 import InputTask from '../InputTask/InputTask';
-
+// import { ITaskContext } from '../../App';
 import Task from '../Task/Task';
 
 const Tasks = () => {
-    const {todoList, setTodoList} = useContext(TaskContext);
-
+    const { todoList } = useContext(TaskContext);
     
-    const [todo, setTodo] = useState(''); 
-
-
-    const handleDelete = (key: string) => {
-        let currentList = [...todoList]
-        const newTodoList = currentList.filter(task => task.id !== key) 
-        setTodoList(newTodoList)
-    }
-
-    const handleComplete = (key: string) => {
-        let newTodoList = [...todoList]
-        const taskIndex = newTodoList.findIndex(task => task.id === key)
-        newTodoList[taskIndex].isCompleted = true;
-        
-        setTodoList(newTodoList);
-    }
-
-    const handleRedo = (key: string) => {
-        let newTodoList = [...todoList]
-        const taskIndex = newTodoList.findIndex(task => task.id === key)
-        newTodoList[taskIndex].isCompleted = false;
-        
-        setTodoList(newTodoList);
-        
-    }
     
     return (
         <div>
             
-            <InputTask todo = {todo} setTodo = {setTodo} todoList = {todoList} setTodoList = {setTodoList}/>
-            
+            <InputTask buttonInputValue='add'/>
             {
-                
-                todoList.map((todo, index) => {
+                todoList?.map((todo, index) => {
                     return(
                         !todo?.isCompleted ?
                             (
-                                <Task
-                                deleteHandler = {() => handleDelete(todo.id)}  
-                                completeHandler = {() => {handleComplete(todo.id)}}
-                                name = {todo.name} key = {todo.id} id = {todo.id}
-                                taskNumber = {index}
-                                />
+                                <Task taskNumber = {index} todo = {todo} key={todo.id}/>
+
                             ) : ''
                     )
                     
                 })
             }
             {
-                todoList.some(todo => !todo.isCompleted) ? <h2>No task has done yet</h2> : <h2> Congratulations</h2>
+                todoList?.some(todo => !todo.isCompleted) ? <h2>No task has done yet</h2> : <h2> Congratulations</h2>
             }
             {
-                todoList.map((todo: any) =>  {
+                todoList?.map((todo: any) =>  {
                     return (
                         todo?.isCompleted ? (
                             <CompletedTask
                                 name = {todo.name}
-                                redoHandler = {() =>handleRedo(todo.id)}
+                                id = {todo.id}
                                 key = {todo.id}
                             />
                         ): ''
@@ -75,8 +42,8 @@ const Tasks = () => {
                 })
             }
         </div>
-    );
-};
+    )
+}
 
 
 export default Tasks;
