@@ -1,20 +1,25 @@
 import './App.css';
-import Tasks from './components/Tasks/Tasks';
+import ShowAllTasks from './components/Visualization/ShowAllTasks';
 import {
   BrowserRouter,
   Routes,
   Route
 } from "react-router-dom";
-import TaskInfo from './components/TaskInfo/TaskInfo';
-import { createContext, useState } from 'react';
+import TaskInfo from './components/Visualization/ShowTaskInfo';
+import { createContext, Fragment, useState } from 'react';
+import CreateTaskCategory from './components/CRUD/CreateTaskCategory';
+import CreateNewTask, { ITask } from './components/CRUD/CreateNewTask';
 
 
 export interface ITaskContext {
-  addNewTask: (name: string, id?: string)=> void
+  addNewTask: (todo: ITask)=> void
+  editTask:(name: string, id: string) => void
   errorMessage: string;
   setErrorMessage:(value: string)=>void;
   todo:string;
   todoList: ITodo[];
+  categoryList: string[];
+  addNewCategory: (value: string) => void;
   handleChange:(value: any)=> void;
   handleSubmit:(value: any)=> void;
   deleteTask:(key: string)=> void;
@@ -26,6 +31,7 @@ export interface ITaskContext {
 export interface ITodo {
   id: string,
   name: string,
+  category: string,
   isCompleted: boolean,
 }
 
@@ -37,38 +43,64 @@ function App() {
 
   const [todoList, setTodoList] = useState<ITodo[]>([]);
   const [errorMessage, setErrorMessage] = useState('');
+  const [categoryList, setCategoryList] = useState<string[]>([]);
 
-  const addNewTask = (name: string, id?: string): void => {
+  const addNewCategory = (name: string):void => {
+
+    if(name.length <= 0){
+      return;
+    }
+    let isCategoryExist = categoryList.some(category => category === name)
+    if(isCategoryExist){
+      
+      return;
+    }
     
+    setCategoryList([...categoryList, name]);
+  }
+ 
+
+  const addNewTask = (taskToCreate: ITask): void => {
+    const {name, category} = taskToCreate;
     if(name.length <= 0){
         setErrorMessage('please insert your task')
         return;
     }
-    let isTaskExist = todoList.some(task => task.name === name && task.id !== id)
+    let isTaskExist = todoList.some(task => task.name === name)
     if(isTaskExist){
         setErrorMessage('Hold on, this task is already in the list')
         return;
     }
-    
-    if(id){
-      const newTodoList = [...todoList]
-      const taskIndex = newTodoList.findIndex(task => task.id === id)
-      if(taskIndex !== -1){
-        newTodoList[taskIndex].name = name;
-        setTodoList(newTodoList);
-        setErrorMessage('');
-        return;
-      }
-      return
-    }
-    
+     
     const task: ITodo = {
       name,
+      category,
       id: `${Math.random()*1000}abc_xyz${Math.random()*1000}`,
       isCompleted: false
     }
     setErrorMessage('');
     setTodoList([...todoList, task])
+  }
+
+  const editTask = (name: string, id: string): void => {
+    const newTodoList = [...todoList]
+    if(name.length <= 0){
+      setErrorMessage('please insert your task')
+      return;
+    }
+    let isTaskExist = todoList.some(task => task.name === name)
+    if(isTaskExist){
+        setErrorMessage('Hold on, this task is already in the list')
+        return;
+    }
+    const taskIndex = newTodoList.findIndex(task => task.id === id)
+    if(taskIndex !== -1){
+      newTodoList[taskIndex].name = name;
+      setTodoList(newTodoList);
+      setErrorMessage('');
+      return;
+    }
+    return
   }
 
 
@@ -98,7 +130,10 @@ function App() {
       <TaskContext.Provider value = {{
         todoList,
         errorMessage, 
+        addNewCategory,
+        categoryList,
         addNewTask,
+        editTask,
         deleteTask,
         completeTask,
         redoTask
@@ -106,7 +141,15 @@ function App() {
       >
       <BrowserRouter>
         <Routes>
-          <Route path = '/' element = {<Tasks />} />
+
+          <Route path = '/' element = {
+            <Fragment>
+              <CreateTaskCategory />
+              <CreateNewTask />
+              <ShowAllTasks />
+            </Fragment>
+          } />
+          
           <Route
             path="/task/:taskId"
             element={<TaskInfo />}

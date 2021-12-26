@@ -1,17 +1,15 @@
 import { useContext} from 'react';
 import { TaskContext } from '../../App';
-import CompletedTask from '../CompletedTask/CompletedTask';
-import InputTask from '../InputTask/InputTask';
-import Task from '../Task/Task';
+import CompletedTask from './ShowCompletedTask';
+import Task from './ShowSingleTask';
 
-const Tasks = () => {
+const ShowAllTasks = () => {
     const { todoList } = useContext(TaskContext);
     
     
     return (
         <div>
             
-            <InputTask />
             {
                 todoList?.map((todo, index) => {
                     return(
@@ -45,4 +43,4 @@ const Tasks = () => {
 }
 
 
-export default Tasks;
+export default ShowAllTasks;

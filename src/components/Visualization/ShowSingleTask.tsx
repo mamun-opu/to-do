@@ -1,16 +1,16 @@
 import { useContext, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { ITodo, TaskContext} from '../../App';
-import EditTask from '../EditTask/EditTask';
+import EditTask from '../CRUD/EditTask';
 import './Tasks.css';
 
 
-export interface ITaskProps{
+export interface IShowSingleTask{
   taskNumber: number;
-  todo: ITodo
+  todo: ITodo;
 }
 
-const Task = ({ taskNumber, todo }: ITaskProps) => {
+const ShowSingleTask = ({ taskNumber, todo }: IShowSingleTask) => {
 
   const [newInput, setNewInput] = useState('');
   const [display, setDisplay] = useState(true);
@@ -50,4 +50,4 @@ const Task = ({ taskNumber, todo }: ITaskProps) => {
   )
 }
 
-export default Task
+export default ShowSingleTask;

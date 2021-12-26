@@ -1,13 +1,13 @@
 import { useContext } from 'react';
 import { TaskContext } from '../../App';
-import './CompletedTask.css';
+
 
 export interface ICompletedProps{
     name: string,
     id: string
 }
 
-const CompletedTask = ({name, id}: ICompletedProps) => {
+const ShowCompletedTask = ({name, id}: ICompletedProps) => {
 
     const {redoTask} = useContext(TaskContext);
     
@@ -19,4 +19,4 @@ const CompletedTask = ({name, id}: ICompletedProps) => {
     );
 };
 
-export default CompletedTask;
+export default ShowCompletedTask;

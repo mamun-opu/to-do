@@ -3,7 +3,7 @@ import { useParams } from 'react-router';
 import { TaskContext } from '../../App';
 
 
-const TaskInfo = () => {
+const ShowTaskInfo = () => {
 
     const {taskId} = useParams();
     const {todoList} = useContext(TaskContext);
@@ -23,4 +23,4 @@ const TaskInfo = () => {
     );
 };
 
-export default TaskInfo;
+export default ShowTaskInfo;

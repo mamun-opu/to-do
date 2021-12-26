@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { TaskContext } from '../../App';
-import Form from '../Form/Form';
+import TextInput from './TextInput';
 
 export interface IEditTask {
     id: string;
@@ -11,23 +11,23 @@ export interface IEditTask {
 
 const EditTask = ({id, setDisplay, newInput, setNewInput}: IEditTask) => {
 
-    const{addNewTask} = useContext(TaskContext);
+    const{editTask} = useContext(TaskContext);
 
     const EditTaskName = (e: any) => {
         e.preventDefault();
         
-        if(!addNewTask){
+        if(!editTask){
             return;
         }
-        addNewTask(newInput, id);
+        editTask(newInput,id);
         setNewInput('');
         setDisplay(true);
     }
 
     return (
         
-        <Form todo= {newInput} 
-            setTodo = {setNewInput} 
+        <TextInput name= {newInput} 
+            setName = {setNewInput} 
             handleSubmit={EditTaskName}
             buttonInputValue = "edit done"
         />

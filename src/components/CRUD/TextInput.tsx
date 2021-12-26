@@ -1,18 +1,18 @@
-export interface IForm {
-    todo: string;
-    setTodo:(value: string) => void;
+export interface ICategoryInput {
+    name: string;
+    setName:(value: string) => void;
     buttonInputValue: string;
     handleSubmit:(value: any)=>void;
   }
-const Form = ({ todo, setTodo, handleSubmit, buttonInputValue }: IForm) => {
+const Form = ({ name, setName, handleSubmit, buttonInputValue }: ICategoryInput) => {
     return (
         <form onSubmit={handleSubmit}>
             <label>
             <span style = {{fontSize: 'larger', fontWeight: 'bold', marginRight: '15px'}}>Name:</span>
             <input
                 type="text"
-                value={todo}
-                onChange={(e)=>setTodo(e.target.value)}
+                value={name}
+                onChange={(e)=>setName(e.target.value)}
             />
             </label>
             <input type="submit" value={buttonInputValue} />
