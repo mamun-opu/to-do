@@ -15,10 +15,10 @@ export interface ITaskContext {
   addNewTask: (todo: ITask)=> void
   editTask:(name: string, id: string) => void
   errorMessage: string;
-  setErrorMessage:(value: string)=>void;
   todo:string;
   todoList: ITodo[];
   categoryList: string[];
+  categoryCreateError: string;
   addNewCategory: (value: string) => void;
   handleChange:(value: any)=> void;
   handleSubmit:(value: any)=> void;
@@ -43,25 +43,36 @@ function App() {
 
   const [todoList, setTodoList] = useState<ITodo[]>([]);
   const [errorMessage, setErrorMessage] = useState('');
+  const [categoryCreateError, setCategoryCreateError] = useState('');
   const [categoryList, setCategoryList] = useState<string[]>([]);
+  
 
   const addNewCategory = (name: string):void => {
 
     if(name.length <= 0){
+      setCategoryCreateError('please insert some text');
       return;
     }
     let isCategoryExist = categoryList.some(category => category === name)
     if(isCategoryExist){
-      
+      setCategoryCreateError('This category is already in the list');
       return;
     }
-    
+    if(categoryList.length >= 3){
+      setCategoryCreateError('maximum 3 category can be added');
+      return;
+    }
+    setCategoryCreateError('')
     setCategoryList([...categoryList, name]);
   }
  
 
   const addNewTask = (taskToCreate: ITask): void => {
     const {name, category} = taskToCreate;
+    if(category === ''){
+      setErrorMessage('please select category!')
+      return;
+    }
     if(name.length <= 0){
         setErrorMessage('please insert your task')
         return;
@@ -130,6 +141,7 @@ function App() {
       <TaskContext.Provider value = {{
         todoList,
         errorMessage, 
+        categoryCreateError,
         addNewCategory,
         categoryList,
         addNewTask,

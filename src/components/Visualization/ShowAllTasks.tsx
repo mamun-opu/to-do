@@ -1,7 +1,7 @@
 import { useContext} from 'react';
 import { TaskContext } from '../../App';
 import CompletedTask from './ShowCompletedTask';
-import Task from './ShowSingleTask';
+import ShowSingleTask from './ShowSingleTask';
 
 const ShowAllTasks = () => {
     const { todoList } = useContext(TaskContext);
@@ -15,7 +15,7 @@ const ShowAllTasks = () => {
                     return(
                         !todo?.isCompleted ?
                             (
-                                <Task taskNumber = {index} todo = {todo} key={todo.id}/>
+                                <ShowSingleTask taskNumber = {index} todo = {todo} key={todo.id}/>
 
                             ) : ''
                     )

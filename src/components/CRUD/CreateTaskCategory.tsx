@@ -5,7 +5,7 @@ import TextInput from './TextInput'
 
 const CreateTaskCategory = () => {
     const [categoryName, setCategoryName] = useState('');
-    const { addNewCategory } = useContext(TaskContext)
+    const { addNewCategory, categoryCreateError } = useContext(TaskContext)
 
     const createNewCategory = (e: any) => {
         e.preventDefault();
@@ -19,7 +19,7 @@ const CreateTaskCategory = () => {
 
     return (
         <div>
-            <h1>hello task category</h1>
+            <h1 style={{fontWeight: 'bold', fontSize: 'larger', color: 'maroon'}}>{categoryCreateError}</h1>
             {/* <span style = {{fontWeight: 'bold', fontSize: 'larger', color: 'maroon'}}>{errorMessage}</span> */}
             <TextInput name = {categoryName} setName={setCategoryName} buttonInputValue='add category' handleSubmit={createNewCategory}/>
         </div>
