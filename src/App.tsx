@@ -161,8 +161,20 @@ function App() {
 
           <Route path = '/' element = {
             <Fragment>
-              <CreateTaskCategory />
-              <CreateNewTask />
+              {
+                categoryList.length <= 2 ? 
+                <>
+                  <h2>Enter Task Category</h2>
+                  <CreateTaskCategory />
+                </>  : ''
+              }
+              {
+                categoryList.length <= 0 ?  '' : 
+                <>
+                  <h2>Enter Task name</h2>
+                  <CreateNewTask /> 
+                </> 
+              }
               <ShowAllTasks />
             </Fragment>
           } />
