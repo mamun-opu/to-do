@@ -21,18 +21,7 @@ const CreateNewTask = () => {
         if(!addNewTask){
             return;
         }
-        // if(todo.category === ''){
-        //     setTodo((preValue: ITask) => {
-        //         const props = 'category';
-        //         console.log('ssssssssss')
-        //         return{
-        //             ...preValue,[props] : 'a'
-        //         }
-        //     });
-        //     addNewTask(todo)
-        //     setTodo({name: '', category: ''})
-        //     return;
-        // }
+        
         addNewTask(todo)
         
         setTodo({name: '', category: ''})
