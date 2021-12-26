@@ -59,10 +59,7 @@ function App() {
       setCategoryCreateError('This category is already in the list');
       return;
     }
-    if(categoryList.length >= 3){
-      setCategoryCreateError('maximum 3 category can be added');
-      return;
-    }
+    
     setCategoryCreateError('')
     setCategoryList([...categoryList, name]);
   }
