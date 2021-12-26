@@ -19,6 +19,7 @@ export interface ITaskContext {
   todoList: ITodo[];
   categoryList: string[];
   categoryCreateError: string;
+  count: number,
   addNewCategory: (value: string) => void;
   handleChange:(value: any)=> void;
   handleSubmit:(value: any)=> void;
@@ -40,7 +41,7 @@ export const TaskContext = createContext<Partial<ITaskContext>>({});
 
 
 function App() {
-
+  const [count, setCount] = useState(0);
   const [todoList, setTodoList] = useState<ITodo[]>([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [categoryCreateError, setCategoryCreateError] = useState('');
@@ -68,6 +69,7 @@ function App() {
  
 
   const addNewTask = (taskToCreate: ITask): void => {
+    
     const {name, category} = taskToCreate;
     if(category === ''){
       setErrorMessage('please select category!')
@@ -126,6 +128,7 @@ function App() {
     let newTodoList = [...todoList]
     const taskIndex = newTodoList.findIndex(task => task.id === key)
     newTodoList[taskIndex].isCompleted = true;
+    setCount(prevCount => prevCount+1)
     setTodoList(newTodoList);
   }
 
@@ -134,12 +137,14 @@ function App() {
     const taskIndex = newTodoList.findIndex(task => task.id === key)
     newTodoList[taskIndex].isCompleted = false;
     setTodoList(newTodoList);
+    setCount(prevCount => prevCount-1)
   }
 
   return (
     <div className="App">
       <TaskContext.Provider value = {{
         todoList,
+        count,
         errorMessage, 
         categoryCreateError,
         addNewCategory,

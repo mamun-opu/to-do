@@ -33,6 +33,7 @@ const NewTaskInput = ({ todo, setTodo, handleSubmit, buttonInputValue }: INewTak
             <input
                 type="text"
                 name="name"
+                value={todo.name}
                 onChange={onChangeHandler}
             />
             

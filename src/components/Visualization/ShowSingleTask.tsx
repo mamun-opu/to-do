@@ -2,7 +2,7 @@ import { useContext, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { ITodo, TaskContext} from '../../App';
 import EditTask from '../CRUD/EditTask';
-import './Tasks.css';
+import './showSingleTask.css';
 
 
 export interface IShowSingleTask{
