@@ -12,6 +12,7 @@ const Form = ({ name, setName, handleSubmit, buttonInputValue }: ICategoryInput)
             <input
                 type="text"
                 value={name}
+                placeholder="type here.."
                 onChange={(e)=>setName(e.target.value)}
             />
             </label>

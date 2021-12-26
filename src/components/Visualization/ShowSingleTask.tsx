@@ -38,14 +38,14 @@ const ShowSingleTask = ({ taskNumber, todo }: IShowSingleTask) => {
                 <button onClick={() => completeTask && completeTask(todo.id)}>complete</button>
             </div>
         </div>
-        <div className = {(display ? 'display-none' : 'display-flex')}>
+        
+        {
+          (display === false) ? 
+          <div style={{display: 'flex'}}>
             <EditTask setDisplay={setDisplay} id = {todo.id} newInput = {newInput} setNewInput = {setNewInput}/>
-            <form action="">
-              <div style={{marginTop: '3px'}}>
-                <input type="button" value="cancel edit" onClick = {switchOffEdit}/> 
-              </div>
-            </form>
-        </div>
+            <input style={{marginTop: '6px'}} type="button" value="cancel edit" onClick = {switchOffEdit}/> 
+          </div> : ''
+        }
     </div>
   )
 }
