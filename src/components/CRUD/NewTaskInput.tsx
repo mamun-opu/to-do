@@ -48,7 +48,7 @@ const NewTaskInput = ({ todo, setTodo, handleSubmit, buttonInputValue }: INewTak
                 
             </select>
             </label>
-            <input type="submit" value={buttonInputValue} />
+            <button type="submit">{buttonInputValue}</button>
         </form>
     );
 };

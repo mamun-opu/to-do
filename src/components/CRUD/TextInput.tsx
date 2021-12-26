@@ -15,7 +15,8 @@ const Form = ({ name, setName, handleSubmit, buttonInputValue }: ICategoryInput)
                 onChange={(e)=>setName(e.target.value)}
             />
             </label>
-            <input type="submit" value={buttonInputValue} />
+            
+            <button type="submit">{buttonInputValue}</button>
         </form>
     );
 };
