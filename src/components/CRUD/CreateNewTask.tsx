@@ -24,8 +24,15 @@ const CreateNewTask = () => {
         
         addNewTask(todo)
         
-        setTodo({name: '', category: ''})
+        // setTodo({name: '', category: ''})
+        setTodo(prevTodo => {
+            return{
+                ...todo, name: '', category: prevTodo.category
+            }
+            
+        })
     }
+
 
     
     return (
