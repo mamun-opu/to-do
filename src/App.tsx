@@ -1,20 +1,18 @@
 import './App.css';
-import ShowAllTasks from './components/Visualization/ShowAllTasks';
 import {
   BrowserRouter,
   Routes,
   Route
 } from "react-router-dom";
 import TaskInfo from './pages/ShowTaskInfo';
-import { createContext, Fragment, useState } from 'react';
-import CreateTaskCategory from './components/CRUD/CreateTaskCategory';
-import CreateNewTask, { ITask } from './components/CRUD/CreateNewTask';
+import { createContext, useState } from 'react';
+import { ITask } from './components/CRUD/CreateNewTask';
 import Home from './pages/Home';
 
 
 export interface ITaskContext {
   addNewTask: (todo: ITask)=> void
-  editTask:(name: string, id: string) => void
+  editTask:(name: string, id: string, category: string) => void
   errorMessage: string;
   todo:string;
   todoList: ITodo[];
@@ -77,7 +75,7 @@ function App() {
         setErrorMessage('please insert your task')
         return;
     }
-    let isTaskExist = todoList.some(task => task.name === name)
+    let isTaskExist = todoList.some(task => task.name === name && task.category === category)
     if(isTaskExist){
         setErrorMessage('Hold on, this task is already in the list')
         return;
@@ -93,13 +91,13 @@ function App() {
     setTodoList([...todoList, task])
   }
 
-  const editTask = (name: string, id: string): void => {
+  const editTask = (name: string, id: string, category: string): void => {
     const newTodoList = [...todoList]
     if(name.length <= 0){
       setErrorMessage('please insert your task')
       return;
     }
-    let isTaskExist = todoList.some(task => task.name === name)
+    let isTaskExist = todoList.some(task => task.name === name && task.category === category)
     if(isTaskExist){
         setErrorMessage('Hold on, this task is already in the list')
         return;

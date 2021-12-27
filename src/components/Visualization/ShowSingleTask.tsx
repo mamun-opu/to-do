@@ -42,7 +42,7 @@ const ShowSingleTask = ({ taskNumber, todo }: IShowSingleTask) => {
         {
           (display === false) ? 
           <div style={{display: 'flex'}}>
-            <EditTask setDisplay={setDisplay} id = {todo.id} newInput = {newInput} setNewInput = {setNewInput}/>
+            <EditTask setDisplay={setDisplay} id = {todo.id} category={todo.category} newInput = {newInput} setNewInput = {setNewInput}/>
             <input style={{marginTop: '6px'}} type="button" value="cancel edit" onClick = {switchOffEdit}/> 
           </div> : ''
         }

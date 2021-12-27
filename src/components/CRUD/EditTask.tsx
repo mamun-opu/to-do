@@ -5,11 +5,12 @@ import TextInput from './TextInput';
 export interface IEditTask {
     id: string;
     newInput: string;
+    category: string;
     setNewInput:(val: any)=>void;
     setDisplay: (val: boolean)=>void; 
 }
 
-const EditTask = ({id, setDisplay, newInput, setNewInput}: IEditTask) => {
+const EditTask = ({id, category, setDisplay, newInput, setNewInput}: IEditTask) => {
 
     const{editTask} = useContext(TaskContext);
 
@@ -19,7 +20,7 @@ const EditTask = ({id, setDisplay, newInput, setNewInput}: IEditTask) => {
         if(!editTask){
             return;
         }
-        editTask(newInput,id);
+        editTask(newInput,id, category);
         setNewInput('');
         setDisplay(true);
     }
