@@ -5,10 +5,11 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import TaskInfo from './components/Visualization/ShowTaskInfo';
+import TaskInfo from './pages/ShowTaskInfo';
 import { createContext, Fragment, useState } from 'react';
 import CreateTaskCategory from './components/CRUD/CreateTaskCategory';
 import CreateNewTask, { ITask } from './components/CRUD/CreateNewTask';
+import Home from './pages/Home';
 
 
 export interface ITaskContext {
@@ -157,23 +158,7 @@ function App() {
         <Routes>
 
           <Route path = '/' element = {
-            <Fragment>
-              {
-                categoryList.length <= 2 ? 
-                <>
-                  <h2>Enter Task Category</h2>
-                  <CreateTaskCategory />
-                </>  : ''
-              }
-              {
-                categoryList.length <= 0 ?  '' : 
-                <>
-                  <h2>Enter Task name</h2>
-                  <CreateNewTask /> 
-                </> 
-              }
-              <ShowAllTasks />
-            </Fragment>
+            <Home />
           } />
           
           <Route

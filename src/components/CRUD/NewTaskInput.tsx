@@ -4,7 +4,7 @@ import { ITask } from "./CreateNewTask";
 
 export interface INewTakInput {
     todo: ITask;
-    setTodo:(val: any) => void;
+    setTodo:(val: ITask) => void;
     buttonInputValue: string;
     handleSubmit:(value: any)=>void;
   }

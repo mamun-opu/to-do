@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { useParams } from 'react-router';
-import { TaskContext } from '../../App';
+import { TaskContext } from '../App';
 
 
 const ShowTaskInfo = () => {
