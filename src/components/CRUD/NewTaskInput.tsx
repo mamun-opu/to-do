@@ -23,6 +23,7 @@ const NewTaskInput = ({ todo, setTodo, handleSubmit, buttonInputValue }: INewTak
         if(categoryList && categoryList?.length > 0){
             setTodo({...todo, 'category': categoryList[categoryList.length-1]})
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [categoryList] );
 
     return (
