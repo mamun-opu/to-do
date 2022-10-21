@@ -14,7 +14,6 @@ const Home = () => {
               {
                categoryList && categoryList.length <= 2 ? 
                 <>
-                  <h2>Enter Task Category</h2>
                   <CreateTaskCategory />
                 </>  : ''
               }

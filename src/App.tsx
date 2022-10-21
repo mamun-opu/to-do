@@ -10,6 +10,7 @@ import { ITask } from './components/CRUD/CreateNewTask';
 import Home from './pages/Home';
 
 
+
 export interface ITaskContext {
   addNewTask: (todo: ITask)=> void
   editTask:(name: string, id: string, category: string) => void
