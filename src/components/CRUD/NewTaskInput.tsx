@@ -7,24 +7,26 @@ export interface INewTakInput {
     setTodo:(val: ITask) => void;
     buttonInputValue: string;
     handleSubmit:(value: any)=>void;
+    categoryName:string;
   }
-const NewTaskInput = ({ todo, setTodo, handleSubmit, buttonInputValue }: INewTakInput) => {
+const NewTaskInput = ({ categoryName, todo, setTodo, handleSubmit, buttonInputValue }: INewTakInput) => {
 
     const {categoryList} = useContext(TaskContext);
 
     const onChangeHandler = (event: any): void => {
         const value = event.target.value;
         const name = event.target.name;
-        setTodo({...todo, [name]: value});
-       
-    }
-    useEffect(() => {
         
-        if(categoryList && categoryList?.length > 0){
-            setTodo({...todo, 'category': categoryList[categoryList.length-1]})
-        }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [categoryList] );
+        setTodo({...todo, [name]: value});
+    }
+    
+    // useEffect(() => {
+        
+    //     if(categoryList && categoryList?.length > 0){
+    //         setTodo({...todo, 'category': categoryList[categoryList.length-1]})
+    //     }
+    // // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [categoryList] );
 
     return (
         <form onSubmit={handleSubmit}>
@@ -39,7 +41,7 @@ const NewTaskInput = ({ todo, setTodo, handleSubmit, buttonInputValue }: INewTak
                 onChange={onChangeHandler}
             />
             
-            <label>
+            {/* <label>
             <select value={todo.category} name="category" onChange={onChangeHandler}>
                 {
                     categoryList?.map((category) => 
@@ -49,7 +51,7 @@ const NewTaskInput = ({ todo, setTodo, handleSubmit, buttonInputValue }: INewTak
                 }
                 
             </select>
-            </label>
+            </label> */}
             <button type="submit">{buttonInputValue}</button>
         </form>
     );
