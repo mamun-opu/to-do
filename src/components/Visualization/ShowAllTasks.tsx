@@ -21,7 +21,7 @@ const ShowAllTasks = () => {
                 {todoList && setTodoList && setCount
                   ? todoList.map((todo) => {
                       
-                      return (todo.category === category && !todo.isCompleted ? (
+                      return (todo.category === category ? (
                         <ShowSingleTask
                           todo={todo}
                           todoList={todoList}

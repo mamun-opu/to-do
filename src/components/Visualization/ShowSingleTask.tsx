@@ -1,8 +1,12 @@
-import { faPenToSquare, faSquareCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPenToSquare,
+  faSquareCheck,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ITodo, TaskContext } from "../../App";
+import { ITodo } from "../../App";
 import EditTask from "../CRUD/EditTask";
 import { completeTask, deleteTask } from "../CRUD/operations";
 import "./showSingleTask.css";
@@ -15,11 +19,17 @@ export interface IShowSingleTask {
   setCount: Function;
 }
 
-const ShowSingleTask = ({ todo, key, todoList, setTodoList, setCount }: IShowSingleTask) => {
+const ShowSingleTask = ({
+  todo,
+  key,
+  todoList,
+  setTodoList,
+  setCount,
+}: IShowSingleTask) => {
   const [newInput, setNewInput] = useState("");
   const [display, setDisplay] = useState(true);
+  const [checkColor, setCheckColor] = useState(false);
   // const { todoList, setTodoList, setCount } = useContext(TaskContext);
-
 
   const switchOnEdit = () => {
     setDisplay(false);
@@ -32,28 +42,49 @@ const ShowSingleTask = ({ todo, key, todoList, setTodoList, setCount }: IShowSin
   };
 
   return (
-    <div>
-      <button
+    <div className="w-96">
+      <div
         className={
-          "taskDisplay outline" +
-          (display ? "flex" : "display-none")
+          `w-96` +
+          (display
+            ? ` flex flex-row justify-between items-center`
+            : ` display-none`)
         }
       >
-        <Link className="" to={"/task/" + todo.id}>
-          {todo.name}
-        </Link>
-
-        <div style={{ marginLeft: "10px" }} className = "flex">
-          
-          <FontAwesomeIcon icon={faPenToSquare} onClick={switchOnEdit} />
-          <FontAwesomeIcon icon={faXmark} onClick={() => deleteTask(todo.id, todoList, setTodoList)} />
-          <FontAwesomeIcon icon={faSquareCheck} onClick={() =>
-              completeTask(todo.id, todoList , setCount, setTodoList)
-            } />
-          
-          
+        <div className="flex">
+          <Link to={"/task/" + todo.id}>{todo.name}</Link>
         </div>
-      </button>
+
+        <div className="flex">
+          <FontAwesomeIcon
+            className="mx-1 hover:cursor-pointer"
+            icon={faPenToSquare}
+            onClick={switchOnEdit}
+          />
+          <FontAwesomeIcon
+            className="mx-1 hover:cursor-pointer"
+            icon={faXmark}
+            onClick={() => deleteTask(todo.id, todoList, setTodoList)}
+          />
+          <FontAwesomeIcon
+            className={
+              `mx-1 hover:cursor-pointer` +
+              (checkColor ? ` text-green-600` : ``)
+            }
+            // `w-96` + (display ? ` flex flex-row justify-between items-center` : ` display-none`)
+            icon={faSquareCheck}
+            onClick={() =>
+              completeTask(
+                todo.id,
+                todoList,
+                setCount,
+                setTodoList,
+                setCheckColor
+              )
+            }
+          />
+        </div>
+      </div>
 
       {display === false ? (
         <div style={{ display: "flex" }}>
