@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 import { ITodo } from "../../App";
 import EditTask from "../CRUD/EditTask";
 import { completeTask, deleteTask } from "../CRUD/operations";
-import "./showSingleTask.css";
 
 export interface IShowSingleTask {
   todo: ITodo;
@@ -29,7 +28,6 @@ const ShowSingleTask = ({
   const [newInput, setNewInput] = useState("");
   const [display, setDisplay] = useState(true);
   const [checkColor, setCheckColor] = useState(false);
-  // const { todoList, setTodoList, setCount } = useContext(TaskContext);
 
   const switchOnEdit = () => {
     setDisplay(false);
@@ -71,7 +69,6 @@ const ShowSingleTask = ({
               `mx-1 hover:cursor-pointer` +
               (checkColor ? ` text-green-600` : ``)
             }
-            // `w-96` + (display ? ` flex flex-row justify-between items-center` : ` display-none`)
             icon={faSquareCheck}
             onClick={() =>
               completeTask(
