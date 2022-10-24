@@ -47,7 +47,7 @@ function App() {
   const [categoryCreateError, setCategoryCreateError] = useState('');
   const [categoryList, setCategoryList] = useState<string[]>([]);
   
-
+  // console.log(categoryList)
  
   return (
     <div className="App">

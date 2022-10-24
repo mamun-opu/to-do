@@ -6,7 +6,8 @@ import "./showAllTasks.css";
 import CreateNewTask from "../CRUD/CreateNewTask";
 
 const ShowAllTasks = () => {
-  const { todoList, categoryList } = useContext(TaskContext);
+  const { todoList, categoryList, setTodoList, setCount } =
+    useContext(TaskContext);
 
   return (
     <div>
@@ -16,21 +17,44 @@ const ShowAllTasks = () => {
             <div className="m-8 p-3 border border-sky-500">
               <button className="btn btn-block">{category}</button>
               <div className="divider">X</div>
-              <>
-                {todoList?.map((todo) => {
+              <div>
+                {todoList && setTodoList && setCount
+                  ? todoList.map((todo) => {
+                      
+                      return (todo.category === category && !todo.isCompleted ? (
+                        <ShowSingleTask
+                          todo={todo}
+                          todoList={todoList}
+                          setTodoList={setTodoList}
+                          setCount={setCount}
+                          key={todo.id}
+                        />
+                      ) : (
+                        ""
+                      ))
+                    })
+                  : ""}
+                {/* {todoList?.map((todo) => {
                   return (
                     <>
-                      {todo.category === category && !todo.isCompleted ? (
-                        <ShowSingleTask todo={todo} key={todo.id} />
+                    
+                      {todo && todo.category === category && !todo.isCompleted ? (
+                        <ShowSingleTask todo={todo} todoList = {todoList} setTodoList = {setTodoList} setCount = {setCount} key={todo.id} />
                       ) : (
                         ""
                       )}
                     </>
                   );
-                })}
-              </>
-
+                })} */}
+                {
+                  console.log('showAllTasks')
+                }
+              </div>
+              {
+                console.log("showAlltasks!!!!")
+              }
               <CreateNewTask categoryName={category} />
+              
             </div>
           );
         })}

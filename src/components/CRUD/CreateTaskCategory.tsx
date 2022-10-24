@@ -8,15 +8,17 @@ import TextInput from "./TextInput";
 const CreateTaskCategory = () => {
   const [categoryName, setCategoryName] = useState("");
   const [isAddList, setIsAddList] = useState(false);
-  const { setCategoryCreateError, categoryList } = useContext(TaskContext);
+  const { setCategoryCreateError, categoryList, setCategoryList } = useContext(TaskContext);
+  // console.log(categoryList)
 
   const createNewCategory = (e: any) => {
     e.preventDefault();
 
-    if (!categoryName||!setCategoryCreateError||!categoryList) {
+    if (!categoryName||!setCategoryCreateError||!categoryList || !setCategoryList ) {
       return;
     }
-    addNewCategory(categoryName, setCategoryCreateError, categoryList );
+    addNewCategory(categoryName, setCategoryCreateError, categoryList, setCategoryList );
+    console.log(categoryName)
     setCategoryName("");
     setIsAddList(false)
   };

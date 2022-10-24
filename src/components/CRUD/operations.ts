@@ -1,7 +1,8 @@
 import { ITodo } from "../../App";
 import { ITask } from "./CreateNewTask";
 
-const addNewCategory = (name: string, setCatError: Function, categoryList: string[] ): void => {
+const addNewCategory = (name: string, setCatError: Function, categoryList: string[], setCategoryList: Function ): void => {
+  console.log(categoryList)
   if (name.length <= 0) {
     setCatError("please insert some text");
     return;
@@ -13,7 +14,8 @@ const addNewCategory = (name: string, setCatError: Function, categoryList: strin
   }
 
   setCatError("");
-  setCatError([...categoryList, name]);
+  setCategoryList([...categoryList, name]);
+  console.log('this is add new category!')
 };
 
 const addNewTask = (taskToCreate: ITask, setErr: Function, todoList: ITodo[], setTodoList: Function): void => {
