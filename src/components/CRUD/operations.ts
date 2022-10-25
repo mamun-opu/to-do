@@ -17,20 +17,19 @@ const addNewCategory = (name: string, categoryList: string[], setCategoryList: F
   setCategoryList([...categoryList, name]);
 };
 
-const addNewTask = (taskToCreate: ITask, setErr: Function, todoList: ITodo[], setTodoList: Function): void => {
-  console.log(taskToCreate)
+const addNewTask = (taskToCreate: ITask, setErr: Function, todoList: ITodo[], setTodoList: Function): any => {
   const { name, category } = taskToCreate;
 
   if (name.length <= 0) {
     setErr("please insert your task");
-    return;
+    return false;
   }
   let isTaskExist = todoList.some(
     (task) => task?.name === name && task.category === category
   );
   if (isTaskExist) {
     setErr("Hold on, this task is already in the list");
-    return;
+    return false;
   }
 
   const task: ITodo = {
@@ -41,6 +40,7 @@ const addNewTask = (taskToCreate: ITask, setErr: Function, todoList: ITodo[], se
   };
   setErr("");
   setTodoList([...todoList, task]);
+  return true;
 };
 
 const editTask = (name: string, id: string, category: string, todoList: ITodo[], setErr: Function, setTodoList: Function): void => {

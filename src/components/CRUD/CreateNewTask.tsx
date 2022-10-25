@@ -1,6 +1,7 @@
 import { faListCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useContext, useState } from "react";
+import { resolve } from "path";
+import { useContext, useEffect, useState } from "react";
 import { TaskContext } from "../../App";
 import NewTaskInput from "./NewTaskInput";
 import { addNewTask } from "./operations";
@@ -27,19 +28,16 @@ const CreateNewTask = ({ categoryName }: ICreateNewTask) => {
     if (!addNewTask || !setErrorMessage || !todoList || !setTodoList) {
       return;
     }
-    // setTodo({
-    //   ...todo,
-    //   // eslint-disable-next-line no-useless-computed-key
-    //   ["name"]: todoName,
-    // });
-    addNewTask(todo, setErrorMessage, todoList, setTodoList);
+    const added = addNewTask(todo, setErrorMessage, todoList, setTodoList);
 
-    // setTodo({name: '', category: ''})
-    setTodo({
-      ...todo,
-      name: "",
-    });
-    setIsAddTask(false);
+    if(added){
+      setTodo({
+        ...todo,
+        name: "",
+      });
+      setIsAddTask(false);
+    }
+    
   };
 
   return (
