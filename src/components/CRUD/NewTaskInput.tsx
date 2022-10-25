@@ -24,7 +24,6 @@ const NewTaskInput = ({
     const { name, value } = event.target;
 
     setTodo({ ...todo, [name]: value });
-    console.log(todo);
   };
   const handleCancel = () => {
     setIsAddTask && setIsAddTask(false);

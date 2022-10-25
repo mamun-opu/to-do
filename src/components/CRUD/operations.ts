@@ -46,14 +46,12 @@ const addNewTask = (taskToCreate: ITask, setErr: Function, todoList: ITodo[], se
 const editTask = (name: string, id: string, category: string, todoList: ITodo[], setErr: Function, setTodoList: Function): void => {
   const newTodoList = [...todoList];
   if (name.length <= 0) {
-    setErr("please insert your task");
     return;
   }
   let isTaskExist = todoList.some(
     (task) => task.name === name && task.category === category
   );
   if (isTaskExist) {
-    setErr("Hold on, this task is already in the list");
     return;
   }
   const taskIndex = newTodoList.findIndex((task) => task.id === id);
