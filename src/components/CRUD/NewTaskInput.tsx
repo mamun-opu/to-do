@@ -46,7 +46,7 @@ const NewTaskInput = ({
           )}
         </label>
       </div>
-      <form className="w-full input input-bordered" onSubmit={handleSubmit}>
+      <form className="w-96 input input-bordered" onSubmit={handleSubmit}>
         <div className="flex items-center py-2">
           <div>
             <input
@@ -58,20 +58,22 @@ const NewTaskInput = ({
               onChange={onChangeHandler}
             />
           </div>
-
-          <button
+            <div className="ml-12">
+            <button
             className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white mb-2 rounded"
             type="submit"
           >
             Submit
           </button>
           <button
-            className="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 mb-1 rounded"
+            className="flex-shrink-0 ml-1 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 mb-1 rounded"
             type="button"
             onClick={handleCancel}
           >
             Cancel
           </button>
+            </div>
+          
         </div>
       </form>
     </div>

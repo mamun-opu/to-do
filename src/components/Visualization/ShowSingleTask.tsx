@@ -77,19 +77,14 @@ const ShowSingleTask = ({
           </div>
         </div>
       ) : (
-        <div style={{ display: "flex" }}>
+        <div>
           <EditTask
             id={todo.id}
             setDisplay={setDisplay}
             category={todo.category}
             newInput={newInput}
             setNewInput={setNewInput}
-          />
-          <input
-            style={{ marginTop: "6px" }}
-            type="button"
-            value="cancel edit"
-            onClick={switchOffEdit}
+            switchOffEdit = {switchOffEdit}
           />
         </div>
       )}

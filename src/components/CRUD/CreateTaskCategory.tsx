@@ -38,8 +38,8 @@ const CreateTaskCategory = () => {
     setCategoryName("");
   };
   const handleCancel = () => {
-    setIsAddList && setIsAddList(false);
     setCategoryName("");
+    setIsAddList && setIsAddList(false);
     setCategoryCreateError && setCategoryCreateError("");
   };
   const {

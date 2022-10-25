@@ -11,6 +11,7 @@ export interface IEditTask {
   setDisplay: (val: boolean) => void;
   isAddList?: boolean;
   setIsAddList?: (value: boolean) => void;
+  switchOffEdit?:() => void;
 }
 
 const EditTask = ({
@@ -19,6 +20,7 @@ const EditTask = ({
   setDisplay,
   newInput,
   setNewInput,
+  switchOffEdit
 }: IEditTask) => {
   const { todoList, setErrorMessage, setTodoList } = useContext(TaskContext);
 
@@ -36,7 +38,7 @@ const EditTask = ({
       name={newInput}
       setName={setNewInput}
       handleSubmitCate={EditTaskName}
-      buttonInputValue="edit done"
+      switchOffEdit = {switchOffEdit}
     />
   );
 };
