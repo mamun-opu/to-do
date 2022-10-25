@@ -30,9 +30,6 @@ const NewTaskInput = ({ categoryName, todo, setTodo, handleSubmit, buttonInputVa
 
     return (
         <form onSubmit={handleSubmit}>
-            <label>
-            <span style = {{fontSize: 'larger', fontWeight: 'bold', marginRight: '15px'}}>Name:</span>
-            </label>
             <input
                 type="text"
                 name="name"

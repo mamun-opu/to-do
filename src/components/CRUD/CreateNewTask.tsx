@@ -1,3 +1,12 @@
+import {
+  faCubesStacked,
+  faLayerGroup,
+  faList,
+  faList12,
+  faListAlt,
+  faListCheck,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useState } from "react";
 import { ITodo, TaskContext } from "../../App";
 import NewTaskInput from "./NewTaskInput";
@@ -12,43 +21,72 @@ export interface ICreateNewTask {
 }
 
 const CreateNewTask = ({ categoryName }: ICreateNewTask) => {
-  const { errorMessage, setErrorMessage, todoList, setTodoList } = useContext(TaskContext);
+  const { errorMessage, setErrorMessage, todoList, setTodoList } =
+    useContext(TaskContext);
+  const [isAddTask, setIsAddTask] = useState(false);
   const [todo, setTodo] = useState<ITask>({
     name: "",
     category: categoryName,
   });
 
-  const createNewTask = (e: any ) => {
+  const createNewTask = (e: any) => {
     e.preventDefault();
     if (!addNewTask) {
       return;
     }
-    if(!setErrorMessage) return;
-    if(!todoList) return;
-    if(!setTodoList) return;
+    if (!setErrorMessage) return;
+    if (!todoList) return;
+    if (!setTodoList) return;
     addNewTask(todo, setErrorMessage, todoList, setTodoList);
 
-    // setTodo({name: '', category: ''}) 
+    // setTodo({name: '', category: ''})
     setTodo({
       ...todo,
       name: "",
     });
+    setIsAddTask(false);
   };
 
   return (
-    <div>
-      <span style={{ fontWeight: "bold", fontSize: "larger", color: "maroon" }}>
+    <div className="w-96 max-w-xs mt-8">
+      {/* <span style={{ fontWeight: "bold", fontSize: "larger", color: "maroon" }}>
         {errorMessage}
-      </span>
-
-      <NewTaskInput
-        categoryName={categoryName}
-        todo={todo}
-        setTodo={setTodo}
-        buttonInputValue="add"
-        handleSubmit={createNewTask}
-      />
+      </span> */}
+      {!isAddTask ? (
+        <button
+          onClick={() => setIsAddTask(true)}
+          className="btn w-96 btn-block"
+        >
+          <FontAwesomeIcon icon={faListCheck} />
+          <span className="ml-3">Add new Task</span>{" "}
+        </button>
+      ) : (
+        <NewTaskInput
+          categoryName={categoryName}
+          todo={todo}
+          setTodo={setTodo}
+          buttonInputValue="add"
+          handleSubmit={createNewTask}
+        />
+      )}
     </div>
+    //   <div className="w-96 max-w-xs mt-8">
+    //   {!isAddList ? (
+    //     <button onClick={() => setIsAddList(true)} className="btn btn-block">
+    //       <FontAwesomeIcon icon={faLayerGroup} />
+    //       <span className="ml-3">Add new Category</span>
+    //     </button>
+    //   ) : (
+    //     <TextInput
+    //       name={categoryName}
+    //       setName={setCategoryName}
+    //       buttonInputValue="add category"
+    //       handleSubmit={createNewCategory}
+    //       isAddList = {isAddList}
+    //       setIsAddList = {setIsAddList}
+    //     />
+    //   )}
+    // </div>
   );
 };
 

@@ -24,7 +24,7 @@ const CreateTaskCategory = () => {
   };
 
   return (
-    <div className="w-92 max-w-xs mt-8">
+    <div className="w-96 max-w-xs mt-8">
       {!isAddList ? (
         <button onClick={() => setIsAddList(true)} className="btn btn-block">
           <FontAwesomeIcon icon={faLayerGroup} />
