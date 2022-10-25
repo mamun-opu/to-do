@@ -1,64 +1,85 @@
 import { useContext } from "react";
 import { TaskContext } from "../../App";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { addNewCategory } from "./operations";
 
 export interface ICategoryInput {
   name: string;
   setName: (value: string) => void;
   buttonInputValue: string;
-  handleSubmit: (value: any) => void;
+  handleSubmitCate?: (value: any) => void;
   isAddList?: boolean;
   setIsAddList?: (value: boolean) => void;
 }
-const Form = ({
-  name,
-  setName,
-  handleSubmit,
-  buttonInputValue,
-  isAddList,
-  setIsAddList,
-}: ICategoryInput) => {
-  const { categoryCreateError } = useContext(TaskContext);
+interface IFormInputs {
+  name: string;
+}
+
+const Form = ({ name, setName, setIsAddList }: ICategoryInput) => {
+  const {
+    setCategoryCreateError,
+    categoryList,
+    setCategoryList,
+    categoryCreateError,
+  } = useContext(TaskContext);
+
+  const onSubmitt: SubmitHandler<IFormInputs> = (data) => {
+    if (!categoryList || !setCategoryList || !setCategoryCreateError) {
+      return;
+    }
+    addNewCategory(
+      data.name,
+      categoryList,
+      setCategoryList,
+      setCategoryCreateError
+    );
+    setName("");
+  };
+
+  const handleCancel = () => {
+    setIsAddList && setIsAddList(false);
+    setName("");
+    setCategoryCreateError && setCategoryCreateError('')
+  };
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<IFormInputs>();
 
   return (
-    // <form onSubmit={handleSubmit}>
-    //   <label>
-    //     <div className="form-control w-full max-w-xs">
-    //       {/* <label className="label">
-    //         <span className="label-text text-red-600">
-    //           {categoryCreateError}
-    //         </span>
-    //       </label> */}
-    //       <input
-    //         type="text"
-    //         value={name}
-    //         placeholder="Type here"
-    //         className="input input-bordered w-full max-w-xs"
-    //         onChange={(e) => setName(e.target.value)}
-    //       />
-
-    //       <button
-    //         onClick={() => setIsAddList && setIsAddList(false)}
-    //         className="btn btn-active btn-ghost"
-    //       >
-    //         Cancel
-    //       </button>
-    //       <button type="submit" className="btn btn-active ml-2 btn-ghost">
-    //         {buttonInputValue}
-    //       </button>
-    //     </div>
-    //   </label>
-    // </form>
-
-    <form className="w-full input input-bordered" onSubmit={handleSubmit}>
+    <form
+      className="w-full input input-bordered"
+      onSubmit={handleSubmit(onSubmitt)}
+    >
       <div className="flex items-center py-2">
-        <input
-          className="appearance-none bg-transparent border-none text-white pb-2 px-2 focus:outline-none"
-          type="text"
-          value={name}
-          placeholder="Type here"
-          aria-label="Full name"
-          onChange={(e) => setName(e.target.value)}
-        />
+        <div>
+          <input
+            {...register("name", {
+              // required: {
+              //   value: true,
+              //   message: "please enter category name",
+              // },
+              // maxLength: {
+              //   value: 15,
+              //   message: "Max length exceeded",
+              // },
+              // validate: {
+              //   positive: (v) =>
+              //     (categoryList &&
+              //       categoryList.some((category) => v !== category)) ||
+              //     "already exist",
+              // },
+            })}
+            className="appearance-none bg-transparent border-none text-white pb-2 px-2 focus:outline-none"
+            type="text"
+            value={name}
+            placeholder="Type here"
+            aria-label="name"
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+
         <button
           className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white mb-2 rounded"
           type="submit"
@@ -68,11 +89,26 @@ const Form = ({
         <button
           className="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 mb-1 rounded"
           type="button"
-          onClick={() => setIsAddList && setIsAddList(false)}
+          onClick={handleCancel}
         >
           Cancel
         </button>
       </div>
+      <label className="label">
+        {/* {errors.name && (
+          <span className="text-red-600 font-medium">
+            {errors.name.message}
+          </span>
+        )} */}
+
+        {categoryCreateError ? (
+          <span className="text-red-600 font-medium">
+            {categoryCreateError}
+          </span>
+        ) : (
+          ""
+        )}
+      </label>
     </form>
   );
 };

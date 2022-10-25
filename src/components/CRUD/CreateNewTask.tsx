@@ -1,14 +1,7 @@
-import {
-  faCubesStacked,
-  faLayerGroup,
-  faList,
-  faList12,
-  faListAlt,
-  faListCheck,
-} from "@fortawesome/free-solid-svg-icons";
+import { faListCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useState } from "react";
-import { ITodo, TaskContext } from "../../App";
+import { TaskContext } from "../../App";
 import NewTaskInput from "./NewTaskInput";
 import { addNewTask } from "./operations";
 

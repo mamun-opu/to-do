@@ -35,7 +35,7 @@ const EditTask = ({
     <TextInput
       name={newInput}
       setName={setNewInput}
-      handleSubmit={EditTaskName}
+      handleSubmitCate={EditTaskName}
       buttonInputValue="edit done"
     />
   );

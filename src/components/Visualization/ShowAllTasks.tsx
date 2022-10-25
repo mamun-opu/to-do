@@ -19,8 +19,7 @@ const ShowAllTasks = () => {
               <div>
                 {todoList && setTodoList && setCount
                   ? todoList.map((todo) => {
-                      
-                      return (todo.category === category ? (
+                      return todo.category === category ? (
                         <ShowSingleTask
                           todo={todo}
                           todoList={todoList}
@@ -30,19 +29,11 @@ const ShowAllTasks = () => {
                         />
                       ) : (
                         ""
-                      ))
+                      );
                     })
                   : ""}
-                
-                {
-                  console.log('showAllTasks')
-                }
               </div>
-              {
-                console.log("showAlltasks!!!!")
-              }
               <CreateNewTask categoryName={category} />
-              
             </div>
           );
         })}
