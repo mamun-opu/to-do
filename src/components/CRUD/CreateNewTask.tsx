@@ -24,12 +24,14 @@ const CreateNewTask = ({ categoryName }: ICreateNewTask) => {
 
   const createNewTask = (e: any) => {
     e.preventDefault();
-    if (!addNewTask) {
+    if (!addNewTask || !setErrorMessage || !todoList || !setTodoList) {
       return;
     }
-    if (!setErrorMessage) return;
-    if (!todoList) return;
-    if (!setTodoList) return;
+    // setTodo({
+    //   ...todo,
+    //   // eslint-disable-next-line no-useless-computed-key
+    //   ["name"]: todoName,
+    // });
     addNewTask(todo, setErrorMessage, todoList, setTodoList);
 
     // setTodo({name: '', category: ''})
@@ -42,9 +44,6 @@ const CreateNewTask = ({ categoryName }: ICreateNewTask) => {
 
   return (
     <div className="w-96 max-w-xs mt-8">
-      {/* <span style={{ fontWeight: "bold", fontSize: "larger", color: "maroon" }}>
-        {errorMessage}
-      </span> */}
       {!isAddTask ? (
         <button
           onClick={() => setIsAddTask(true)}
@@ -55,6 +54,7 @@ const CreateNewTask = ({ categoryName }: ICreateNewTask) => {
         </button>
       ) : (
         <NewTaskInput
+          setIsAddTask={setIsAddTask}
           categoryName={categoryName}
           todo={todo}
           setTodo={setTodo}
@@ -63,23 +63,6 @@ const CreateNewTask = ({ categoryName }: ICreateNewTask) => {
         />
       )}
     </div>
-    //   <div className="w-96 max-w-xs mt-8">
-    //   {!isAddList ? (
-    //     <button onClick={() => setIsAddList(true)} className="btn btn-block">
-    //       <FontAwesomeIcon icon={faLayerGroup} />
-    //       <span className="ml-3">Add new Category</span>
-    //     </button>
-    //   ) : (
-    //     <TextInput
-    //       name={categoryName}
-    //       setName={setCategoryName}
-    //       buttonInputValue="add category"
-    //       handleSubmit={createNewCategory}
-    //       isAddList = {isAddList}
-    //       setIsAddList = {setIsAddList}
-    //     />
-    //   )}
-    // </div>
   );
 };
 

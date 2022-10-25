@@ -18,6 +18,7 @@ const addNewCategory = (name: string, categoryList: string[], setCategoryList: F
 };
 
 const addNewTask = (taskToCreate: ITask, setErr: Function, todoList: ITodo[], setTodoList: Function): void => {
+  console.log(taskToCreate)
   const { name, category } = taskToCreate;
 
   if (name.length <= 0) {
