@@ -42,8 +42,8 @@ const ShowSingleTask = ({
   return (
     <div className="w-96">
       {display ? (
-        <div className={"w-96 flex flex-row justify-between items-center"}>
-          <div className="flex">
+        <div className={"w-96 text-black flex flex-row justify-between items-center"}>
+          <div className="flex font-medium">
             <Link to={"/task/" + todo.id}>{todo.name}</Link>
           </div>
 

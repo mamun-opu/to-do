@@ -13,7 +13,7 @@ const ShowAllTasks = () => {
       <div className="flex">
         {categoryList?.map((category) => {
           return (
-            <div className="m-8 p-3 border border-sky-500">
+            <div className="m-8 p-3 border border-sky-500 h-fit">
               <button className="btn btn-block w-96">{category}</button>
               <div className="divider">X</div>
               <div>
