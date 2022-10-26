@@ -70,19 +70,19 @@ const deleteTask = (key: string, todoList: ITodo[], setTodoList: Function) => {
   setTodoList(newTodoList);
 };
 
-const completeTask = (key: string, todoList: ITodo[], setCount: Function, setTodoList: Function, setCheckColor:Function) => {
+const completeTask = (key: string, todoList: ITodo[], setCount: Function, setTodoList: Function) => {
   
   let newTodoList = [...todoList];
   const taskIndex = newTodoList.findIndex((task) => task.id === key);
   if(newTodoList[taskIndex].isCompleted === true){
     newTodoList[taskIndex].isCompleted = false;
-    setCheckColor(false)
+    setCount((prevCount: number) => prevCount - 1);
   } else{
     newTodoList[taskIndex].isCompleted = true;
-    setCheckColor(true)
+    setCount((prevCount: number) => prevCount + 1);
   }
   
-  setCount((prevCount: number) => prevCount + 1);
+ 
   setTodoList(newTodoList);
 };
 

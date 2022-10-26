@@ -26,7 +26,6 @@ const ShowSingleTask = ({
 }: IShowSingleTask) => {
   const [newInput, setNewInput] = useState("");
   const [display, setDisplay] = useState(true);
-  const [checkColor, setCheckColor] = useState(false);
 
   const switchOnEdit = () => {
     setDisplay(false);
@@ -64,7 +63,7 @@ const ShowSingleTask = ({
             <FontAwesomeIcon
               className={
                 `mx-1 hover:cursor-pointer` +
-                (checkColor ? ` text-green-600` : ``)
+                (todo.isCompleted ? ` text-green-600` : ``)
               }
               icon={faSquareCheck}
               onClick={() =>
@@ -72,8 +71,7 @@ const ShowSingleTask = ({
                   todo.id,
                   todoList,
                   setCount,
-                  setTodoList,
-                  setCheckColor
+                  setTodoList
                 )
               }
             />

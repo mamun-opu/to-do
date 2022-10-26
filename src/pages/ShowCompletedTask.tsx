@@ -6,7 +6,7 @@ const ShowCompletedTask = () => {
   const { todoList, count } = useContext(TaskContext);
   return (
     <div className="h-screen w-screen pt-20 pb-20 bg-zinc-800">
-        <div className="flex justify-end mb-8 mr-8">
+      <div className="flex justify-end mb-8 mr-8">
         <Link className="text-teal-400" to={"/"}>
           /Home page
         </Link>
@@ -25,15 +25,14 @@ const ShowCompletedTask = () => {
           <tbody>
             {todoList?.map((todo) => {
               return (
-                <>
-                  <tr>
-                    {
-                        console.log(todo.name)
-                    }
-                    <td>{todo.name}</td>
-                    <td>{todo.category}</td>
-                  </tr>
-                </>
+                todo.isCompleted && (
+                  <>
+                    <tr>
+                      <td>{todo.name}</td>
+                      <td>{todo.category}</td>
+                    </tr>
+                  </>
+                )
               );
             })}
           </tbody>
