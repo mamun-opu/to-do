@@ -6,8 +6,8 @@ import {
 } from "react-router-dom";
 import TaskInfo from './pages/ShowTaskInfo';
 import { createContext, useState } from 'react';
-import { ITask } from './components/CRUD/CreateNewTask';
 import Home from './pages/Home';
+import ShowCompletedTask from './pages/ShowCompletedTask';
 
 
 
@@ -74,6 +74,10 @@ function App() {
           <Route
             path="/task/:taskId"
             element={<TaskInfo />}
+          />
+          <Route
+            path="/completed-task"
+            element={<ShowCompletedTask />}
           />
         </Routes>
       </BrowserRouter>

@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { TaskContext } from "../../App";
 import ShowSingleTask from "./ShowSingleTask";
-import "./showAllTasks.css";
 import CreateNewTask from "../CRUD/CreateNewTask";
 
 const ShowAllTasks = () => {
@@ -14,7 +13,7 @@ const ShowAllTasks = () => {
         {categoryList?.map((category) => {
           return (
             <div className="m-8 p-3 border border-sky-500 h-fit">
-              <button className="btn btn-block w-96">{category}</button>
+              <button className="btn btn-block text-white w-96">{category}</button>
               <div className="divider">X</div>
               <div>
                 {todoList && setTodoList && setCount

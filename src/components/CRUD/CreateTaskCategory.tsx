@@ -44,7 +44,6 @@ const CreateTaskCategory = () => {
   };
   const {
     register,
-    formState: { errors },
     handleSubmit,
   } = useForm<IFormInputs>();
   return (

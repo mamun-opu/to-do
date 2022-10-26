@@ -1,26 +1,33 @@
-import { useContext } from 'react';
-import { useParams } from 'react-router';
-import { TaskContext } from '../App';
-
+import { useContext } from "react";
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
+import { TaskContext } from "../App";
 
 const ShowTaskInfo = () => {
+  const { taskId } = useParams();
+  const { todoList } = useContext(TaskContext);
+  const todo = todoList?.find((todo) => {
+    return todo.id === taskId;
+  });
 
-    const {taskId} = useParams();
-    const {todoList} = useContext(TaskContext);
-    const todo = todoList?.find(todo => {
-        return (todo.id === taskId)
-    })
-
-
-
-    return (
-        <div>
-            <h1>This is task INFO </h1>
-            <hr style = {{width: '20%', height: '3px', border: 'solid 1px white', borderRadius: '5px', backgroundImage: 'linear-gradient(to right, #a58cbd, #b7b7de, #00d4ff)'}}/>
-            <h3>Task name: <span style = {{color: 'blue', fontSize: 'larger', fontWeight: 'bolder'}}>{todo?.name}</span></h3>
-            <h4>Task ID: <span style = {{color: 'maroon', fontWeight: 'bolder'}}>{todo?.id}</span></h4>
+  return (
+    <div className="h-screen w-screen pt-20 pb-20 bg-zinc-800">
+      <div className="hero min-h-full w-5/6 mx-auto">
+        <div className="hero-overlay bg-white"></div>
+        <div className="hero-content text-center text-neutral-content">
+          <div className="max-w-md">
+            <h1 className="mb-5 text-5xl font-bold uppercase text-teal-500">
+              {todo?.name}
+            </h1>
+            <p className="mb-5 font-medium text-info">ID: {todo?.id}</p>
+            <Link className="btn btn-primary" to="/">
+              Home
+            </Link>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default ShowTaskInfo;

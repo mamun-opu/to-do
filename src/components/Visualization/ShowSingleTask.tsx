@@ -20,7 +20,6 @@ export interface IShowSingleTask {
 
 const ShowSingleTask = ({
   todo,
-  key,
   todoList,
   setTodoList,
   setCount,
@@ -42,7 +41,11 @@ const ShowSingleTask = ({
   return (
     <div className="w-96">
       {display ? (
-        <div className={"w-96 text-black flex flex-row justify-between items-center"}>
+        <div
+          className={
+            "w-96 text-black flex flex-row justify-between items-center"
+          }
+        >
           <div className="flex font-medium">
             <Link to={"/task/" + todo.id}>{todo.name}</Link>
           </div>
@@ -84,7 +87,7 @@ const ShowSingleTask = ({
             category={todo.category}
             newInput={newInput}
             setNewInput={setNewInput}
-            switchOffEdit = {switchOffEdit}
+            switchOffEdit={switchOffEdit}
           />
         </div>
       )}

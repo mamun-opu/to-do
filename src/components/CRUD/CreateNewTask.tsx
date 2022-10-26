@@ -1,7 +1,6 @@
 import { faListCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { resolve } from "path";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { TaskContext } from "../../App";
 import NewTaskInput from "./NewTaskInput";
 import { addNewTask } from "./operations";
@@ -15,7 +14,7 @@ export interface ICreateNewTask {
 }
 
 const CreateNewTask = ({ categoryName }: ICreateNewTask) => {
-  const { errorMessage, setErrorMessage, todoList, setTodoList } =
+  const { setErrorMessage, todoList, setTodoList } =
     useContext(TaskContext);
   const [isAddTask, setIsAddTask] = useState(false);
   const [todo, setTodo] = useState<ITask>({
