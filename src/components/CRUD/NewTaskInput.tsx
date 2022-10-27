@@ -5,18 +5,14 @@ import { ITask } from "./CreateNewTask";
 export interface INewTakInput {
   todo: ITask;
   setTodo: (val: ITask) => void;
-  buttonInputValue: string;
   handleSubmit: (value: any) => void;
-  categoryName: string;
   setIsAddTask: (value: boolean) => void;
 }
 const NewTaskInput = ({
   setIsAddTask,
-  categoryName,
   todo,
   setTodo,
   handleSubmit,
-  buttonInputValue,
 }: INewTakInput) => {
   const { errorMessage, setErrorMessage } = useContext(TaskContext);
 
@@ -45,7 +41,7 @@ const NewTaskInput = ({
           )}
         </label>
       </div>
-      <form className="w-96 input input-bordered" onSubmit={handleSubmit}>
+      <form className="w-full input input-bordered" onSubmit={handleSubmit}>
         <div className="flex items-center py-2">
           <div>
             <input
@@ -57,8 +53,7 @@ const NewTaskInput = ({
               onChange={onChangeHandler}
             />
           </div>
-            <div className="ml-12">
-            <button
+          <button
             className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white mb-2 rounded"
             type="submit"
           >
@@ -71,8 +66,6 @@ const NewTaskInput = ({
           >
             Cancel
           </button>
-            </div>
-          
         </div>
       </form>
     </div>

@@ -47,9 +47,9 @@ const CreateTaskCategory = () => {
     handleSubmit,
   } = useForm<IFormInputs>();
   return (
-    <div className="w-96 max-w-xs mt-8">
+    <div className="w-80 max-w-xs mt-8 mx-2">
       {!isAddList ? (
-        <button onClick={() => setIsAddList(true)} className="btn btn-block mr-8 w-96">
+        <button onClick={() => setIsAddList(true)} className="btn btn-block w-80">
           <FontAwesomeIcon icon={faLayerGroup} />
           <span className="ml-3">Add new Category</span>
         </button>

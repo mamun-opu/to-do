@@ -40,11 +40,11 @@ const CreateNewTask = ({ categoryName }: ICreateNewTask) => {
   };
 
   return (
-    <div className="w-96 max-w-xs mt-8">
+    <div className="w-80 max-w-xs mt-8">
       {!isAddTask ? (
         <button
           onClick={() => setIsAddTask(true)}
-          className="btn w-96 btn-block"
+          className="btn btn-block"
         >
           <FontAwesomeIcon icon={faListCheck} />
           <span className="ml-3">Add new Task</span>{" "}
@@ -52,10 +52,8 @@ const CreateNewTask = ({ categoryName }: ICreateNewTask) => {
       ) : (
         <NewTaskInput
           setIsAddTask={setIsAddTask}
-          categoryName={categoryName}
           todo={todo}
           setTodo={setTodo}
-          buttonInputValue="add"
           handleSubmit={createNewTask}
         />
       )}

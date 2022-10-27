@@ -12,10 +12,10 @@ const ShowCompletedTask = () => {
         </Link>
       </div>
       <div className="rounded h-full w-5/6 mx-auto overflow-x-auto overflow-y-scroll bg-stone-300 flex items-center flex-col justify-start">
-        <button className="btn btn-block uppercase w-96 m-8">
+        <button className="btn btn-block uppercase w-80 m-8">
           completed task: {count}
         </button>
-        <table className="table w-96">
+        <table className="table w-80">
           <thead>
             <tr>
               <th>Name</th>

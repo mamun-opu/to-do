@@ -38,11 +38,11 @@ const ShowSingleTask = ({
   };
 
   return (
-    <div className="w-96">
+    <div className="w-">
       {display ? (
         <div
           className={
-            "w-96 text-black flex flex-row justify-between items-center"
+            "w-80 text-black flex flex-row justify-between items-center"
           }
         >
           <div className="flex font-medium">
@@ -78,7 +78,7 @@ const ShowSingleTask = ({
           </div>
         </div>
       ) : (
-        <div>
+        <div className="w-80 mt-2">
           <EditTask
             id={todo.id}
             setDisplay={setDisplay}

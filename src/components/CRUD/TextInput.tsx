@@ -22,7 +22,7 @@ const Form = ({ name, setName, setIsAddList, handleSubmitCate, switchOffEdit }: 
   };
   return (
     <form
-      className="w-96 input input-bordered"
+      className="w-full input input-bordered"
       onSubmit={handleSubmitCate}
     >
       <div className="flex items-center py-2">
@@ -37,8 +37,7 @@ const Form = ({ name, setName, setIsAddList, handleSubmitCate, switchOffEdit }: 
             onChange={(e) => setName(e.target.value)}
           />
         </div>
-        <div className="ml-12">
-          <button
+        <button
             className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white rounded"
             type="submit"
           >
@@ -51,7 +50,6 @@ const Form = ({ name, setName, setIsAddList, handleSubmitCate, switchOffEdit }: 
           >
             Cancel
           </button>
-        </div>
       </div>
       <label className="label">
 

@@ -13,7 +13,7 @@ const ShowAllTasks = () => {
         {categoryList?.map((category) => {
           return (
             <div className="m-8 p-3 border border-sky-500 h-fit">
-              <button className="btn btn-block text-white w-96">{category}</button>
+              <button className="btn btn-block text-white w-80">{category}</button>
               <div className="divider">X</div>
               <div>
                 {todoList && setTodoList && setCount
