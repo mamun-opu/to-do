@@ -17,27 +17,33 @@ const CreateTaskCategory = () => {
   const [isAddList, setIsAddList] = useState(false);
   const [categoryName, setCategoryName] = useState("");
 
-  const { setCategoryCreateError, categoryList, setCategoryList } =
-    useContext(TaskContext);
+  const {
+    setCategoryCreateError,
+    categoryCreateError,
+    categoryList,
+    setCategoryList,
+  } = useContext(TaskContext);
 
-  
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (!categoryList || !setCategoryList || !setCategoryCreateError) {
       return;
     }
-    addNewCategory(
+    const added = addNewCategory(
       categoryName,
       categoryList,
       setCategoryList,
       setCategoryCreateError
     );
-    setCategoryName("");
+    if (added) {
+      setCategoryName("");
+      setIsAddList(false);
+    }
   };
 
   const handleCancel = () => {
     setCategoryName("");
-    setIsAddList && setIsAddList(false);
+    setIsAddList(false);
     setCategoryCreateError && setCategoryCreateError("");
   };
 

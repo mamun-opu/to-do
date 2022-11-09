@@ -8,8 +8,13 @@ interface IInputText {
   handleCancel: () => void;
 }
 
-export default function InputText({ handleSubmit, handleCancel, setName, name }: IInputText) {
-  const { categoryCreateError } = useContext(TaskContext);
+export default function InputText({
+  handleSubmit,
+  handleCancel,
+  setName,
+  name,
+}: IInputText) {
+  const { categoryCreateError, errorMessage } = useContext(TaskContext);
 
   return (
     <div>
@@ -44,6 +49,9 @@ export default function InputText({ handleSubmit, handleCancel, setName, name }:
             <span className="text-red-600 font-medium">
               {categoryCreateError}
             </span>
+          )}
+          {errorMessage && (
+            <span className="text-red-600 font-medium">{errorMessage}</span>
           )}
         </label>
       </form>
