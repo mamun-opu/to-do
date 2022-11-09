@@ -12,6 +12,8 @@ import ShowCompletedTask from './pages/ShowCompletedTask';
 
 
 export interface ITaskContext {
+  text: string;
+  setText: (value: string) => void;
   errorMessage: string;
   todo:string;
   todoList: ITodo[];
@@ -42,6 +44,7 @@ export const TaskContext = createContext<Partial<ITaskContext>>({});
 
 function App() {
   const [count, setCount] = useState(0);
+  const [text, setText] = useState("");
   const [todoList, setTodoList] = useState<ITodo[]>([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [categoryCreateError, setCategoryCreateError] = useState('');
@@ -52,6 +55,8 @@ function App() {
   return (
     <div className="App">
       <TaskContext.Provider value = {{
+        text,
+        setText,
         todoList,
         count,
         setCount,
