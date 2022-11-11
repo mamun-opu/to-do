@@ -17,7 +17,7 @@ const ShowAllTasks = () => {
       <div className="flex">
         {categoryList?.map((category) => {
           return (
-            <div className="m-8 p-3 border border-sky-500 h-fit w-56 md:w-64 lg:w-80">
+            <div className="m-4 md:m-8 p-3 border border-sky-500 h-fit w-56 md:w-64 lg:w-80">
               <button className="btn btn-sm md:btn-md no-animation btn-block flex justify-between cursor-default">
                 <div>{category}</div>
                 <FontAwesomeIcon
