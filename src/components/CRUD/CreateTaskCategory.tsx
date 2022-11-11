@@ -19,7 +19,6 @@ const CreateTaskCategory = () => {
 
   const {
     setCategoryCreateError,
-    categoryCreateError,
     categoryList,
     setCategoryList,
   } = useContext(TaskContext);

@@ -2,7 +2,6 @@ import { faListCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useState } from "react";
 import { TaskContext } from "../../App";
-import InputText from "./InputText";
 import NewTaskInput from "./NewTaskInput";
 import { addNewTask } from "./operations";
 
@@ -40,14 +39,14 @@ const CreateNewTask = ({ categoryName }: ICreateNewTask) => {
       setIsAddTask(false);
     }
   };
-  const handleCancel = () => {
-    setIsAddTask && setIsAddTask(false);
-    setTodo({
-      ...todo,
-      name: "",
-    });
-    setErrorMessage && setErrorMessage("");
-  };
+  // const handleCancel = () => {
+  //   setIsAddTask && setIsAddTask(false);
+  //   setTodo({
+  //     ...todo,
+  //     name: "",
+  //   });
+  //   setErrorMessage && setErrorMessage("");
+  // };
 
   return (
     <div className="w-80 max-w-xs mt-8">
