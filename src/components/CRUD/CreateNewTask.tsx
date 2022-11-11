@@ -57,18 +57,18 @@ const CreateNewTask = ({ categoryName }: ICreateNewTask) => {
           <span className="ml-3">Add new Task</span>{" "}
         </button>
       ) : (
-        // <NewTaskInput
-        //   setIsAddTask={setIsAddTask}
-        //   todo={todo}
-        //   setTodo={setTodo}
-        //   handleSubmit={createNewTask}
-        // />
-        <InputText
-          name={taskName}
-          setName={setTaskName}
+        <NewTaskInput
+          setIsAddTask={setIsAddTask}
+          todo={todo}
+          setTodo={setTodo}
           handleSubmit={createNewTask}
-          handleCancel = {handleCancel}
         />
+        // <InputText
+        //   name={taskName}
+        //   setName={setTaskName}
+        //   handleSubmit={createNewTask}
+        //   handleCancel = {handleCancel}
+        // />
       )}
     </div>
   );
