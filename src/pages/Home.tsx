@@ -16,30 +16,6 @@ const Home = () => {
           <CreateTaskCategory />
         </div>
       </div>
-      
-        {/* <form className="w-56 md:w-64 lg:w-80">
-          <div className="flex items-center border rounded border-teal-500 py-1 md:py-2">
-            <input
-              className="appearance-none bg-transparent w-full text-white mr-3 py-1 px-2 focus:outline-none"
-              type="text"
-              placeholder="Jane Doe"
-              aria-label="Full name"
-            />
-            <button
-              className="flex-shrink-0 bg-teal-500 w-lg hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white md:py-1 md:px-2 rounded"
-              type="button"
-            >
-              Sign Up
-            </button>
-            <button
-              className="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 md:px-2 rounded"
-              type="button"
-            >
-              Cancel
-            </button>
-          </div>
-        </form> */}
-      
     </div>
   );
 };

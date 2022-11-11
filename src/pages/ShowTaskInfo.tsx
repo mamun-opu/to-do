@@ -11,15 +11,12 @@ const ShowTaskInfo = () => {
   });
 
   return (
-    <div className="h-screen w-screen pt-20 pb-20 bg-zinc-800">
-      <div className="hero min-h-full w-4/6 mx-auto">
-        <div className="hero-overlay bg-white"></div>
-        <div className="hero-content text-center text-neutral-content">
-          <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold uppercase text-teal-500">
-              {todo?.name}
-            </h1>
-            <p className="mb-5 font-medium text-info">ID: {todo?.id}</p>
+    <div className="h-screen w-screen pt-20 pb-20 bg-zinc-800 flex items-center justify-center">
+      <div className="card w-56 md:w-64 lg:w-80 bg-base-100 shadow-xl">
+        <div className="card-body">
+          <h2 className="card-title text-accent uppercase">{todo?.name}</h2>
+          <p>Category: {todo?.category}</p>
+          <div className="card-actions justify-end">
             <Link className="btn btn-primary" to="/">
               Home
             </Link>
