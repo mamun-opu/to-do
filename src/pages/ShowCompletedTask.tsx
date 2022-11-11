@@ -17,7 +17,7 @@ const ShowCompletedTask = () => {
           completed task: {result}
         </button>
         {result && result > 0 ? (
-          <table className="table w-56 md:w-64 lg:w-80">
+          <table className="table mb-8 w-56 md:w-64 lg:w-80">
             <thead>
               <tr>
                 <th>Name</th>
