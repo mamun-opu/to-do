@@ -12,13 +12,15 @@ const ShowAllTasks = () => {
       <div className="flex">
         {categoryList?.map((category) => {
           return (
-            <div className="m-8 p-3 border border-sky-500 h-fit">
-              <button className="btn btn-block text-white w-80">{category}</button>
+            <div className="m-8 p-3 border border-sky-500 h-fit w-56 md:w-64 lg:w-80">
+              <button className="btn btn btn-sm md:btn-md btn-block">
+                {category}
+              </button>
               <div className="divider">X</div>
-              <div>
-                {todoList && setTodoList && setCount
-                  ? todoList.map((todo) => {
-                      return todo.category === category ? (
+              {todoList && setTodoList && setCount
+                ? todoList.map((todo) => {
+                    return (
+                      todo.category === category && (
                         <ShowSingleTask
                           todo={todo}
                           todoList={todoList}
@@ -26,12 +28,10 @@ const ShowAllTasks = () => {
                           setCount={setCount}
                           key={todo.id}
                         />
-                      ) : (
-                        ""
-                      );
-                    })
-                  : ""}
-              </div>
+                      )
+                    );
+                  })
+                : ""}
               <CreateNewTask categoryName={category} />
             </div>
           );
