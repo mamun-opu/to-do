@@ -12,7 +12,7 @@ const ShowTaskInfo = () => {
 
   return (
     <div className="h-screen w-screen pt-20 pb-20 bg-zinc-800">
-      <div className="hero min-h-full w-5/6 mx-auto">
+      <div className="hero min-h-full w-4/6 mx-auto">
         <div className="hero-overlay bg-white"></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">

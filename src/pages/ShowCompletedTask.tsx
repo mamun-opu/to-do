@@ -8,14 +8,14 @@ const ShowCompletedTask = () => {
     <div className="h-screen w-screen pt-20 pb-20 bg-zinc-800">
       <div className="flex justify-end mb-8 mr-8">
         <Link className="text-teal-400" to={"/"}>
-          /Home page
+          /Show All Task
         </Link>
       </div>
       <div className="rounded h-full w-5/6 mx-auto overflow-x-auto overflow-y-scroll bg-stone-300 flex items-center flex-col justify-start">
-        <button className="btn btn-block uppercase w-80 m-8">
+        <button className="btn btn-block uppercase w-56 md:w-64 lg:w-80 m-8">
           completed task: {count}
         </button>
-        <table className="table w-80">
+        <table className="table w-56 md:w-64 lg:w-80">
           <thead>
             <tr>
               <th>Name</th>
