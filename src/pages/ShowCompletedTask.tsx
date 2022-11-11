@@ -15,28 +15,32 @@ const ShowCompletedTask = () => {
         <button className="btn btn-block uppercase w-56 md:w-64 lg:w-80 m-8">
           completed task: {count}
         </button>
-        <table className="table w-56 md:w-64 lg:w-80">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Category</th>
-            </tr>
-          </thead>
-          <tbody>
-            {todoList?.map((todo) => {
-              return (
-                todo.isCompleted && (
-                  <>
-                    <tr>
-                      <td>{todo.name}</td>
-                      <td>{todo.category}</td>
-                    </tr>
-                  </>
-                )
-              );
-            })}
-          </tbody>
-        </table>
+        {count && count > 0 ? (
+          <table className="table w-56 md:w-64 lg:w-80">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Category</th>
+              </tr>
+            </thead>
+            <tbody>
+              {todoList?.map((todo) => {
+                return (
+                  todo.isCompleted && (
+                    <>
+                      <tr>
+                        <td>{todo.name}</td>
+                        <td>{todo.category}</td>
+                      </tr>
+                    </>
+                  )
+                );
+              })}
+            </tbody>
+          </table>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
