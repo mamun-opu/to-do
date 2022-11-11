@@ -94,6 +94,14 @@ const redoTask = (key: string, todoList: ITodo[], setCount: Function, setTodoLis
   setTodoList(newTodoList);
   setCount((prevCount: number) => prevCount - 1);
 };
+const deleteCategory = (category: string, todoList: ITodo[], setTodoList: Function, categoryList: string[], setCategoryList: Function) => {
+  let currentList = [...todoList];
+  const newTodoList = currentList.filter((task) => task.category !== category);
+  setTodoList(newTodoList);
+  let currentCateList = [...categoryList];
+  const newCateList = currentCateList.filter(cate => cate !== category);
+  setCategoryList(newCateList);
+}
 
 export {
   addNewCategory,
@@ -102,4 +110,5 @@ export {
   deleteTask,
   completeTask,
   redoTask,
+  deleteCategory
 };
