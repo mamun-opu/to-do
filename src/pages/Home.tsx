@@ -10,7 +10,7 @@ const Home = () => {
           /completed task
         </Link>
       </div>
-      <div className="rounded flex h-full w-5/6 mx-auto overflow-x-scroll bg-stone-300">
+      <div className="rounded flex h-full w-5/6 mx-auto overflow-x-auto bg-stone-300">
         <ShowAllTasks />
         <div>
           <CreateTaskCategory />
