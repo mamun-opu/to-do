@@ -67,7 +67,7 @@ The app will be available at `http://localhost:3000`.
 
 ## Technologies Used
 
-- Frontend: HTML, CSS, TypeScript, React
+- Frontend: HTML, CSS, Tailwind CSS, TSX/JSX, TypeScript, React
 - Data Storage: Session Storage
 - React Hooks: `useState` for managing state, `useEffect` for side effects, `useContext` for managing global state.
 
