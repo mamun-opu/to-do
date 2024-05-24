@@ -20,9 +20,8 @@ You can check out the live demo at [Task Manager Live Demo](https://taskmanager-
 
 ## Screenshots
 
-![screenshot 1](https://drive.google.com/file/d/1x8gLeLG-NtxBigEYJpvTET8s1MiKodyL/view?usp=sharing)
-
-![screenshot 2](https://drive.google.com/file/d/18nNu1e4m70qxUFlfTm7oPM-yXNTpRe3d/view?usp=sharing)
+![Screenshot (181)](https://github.com/mamun-opu/to-do/assets/50217298/685c5fa1-0bb4-4297-91d5-5dea5764d6ed)
+![Screenshot (182)](https://github.com/mamun-opu/to-do/assets/50217298/fdda40bf-7615-4d42-8efb-e5ef30b833c9)
 
 ## Installation
 
